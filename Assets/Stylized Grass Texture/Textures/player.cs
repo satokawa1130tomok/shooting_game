@@ -77,7 +77,7 @@ public class player : MonoBehaviour
             characterController.Move(this.gameObject.transform.right * MoveSpeed * Time.deltaTime);
 
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.B))
         {
             // GameObject bullets = Instantiate(bullet) as GameObject;
             //bullets.transform.position = this.transform.position;
@@ -90,6 +90,7 @@ public class player : MonoBehaviour
             //Destroy(bullet.gameObject, 4);
             GameObject bullets = Instantiate(bullet) as GameObject;// bulletを作成し、作成したものはbulletsとする
             bullets.transform.position = muzzle.transform.position;// bulletsをプレイヤーの場所に移動させる
+            bullet.transform.rotation = muzzle.transform.rotation;
             force = this.gameObject.transform.forward * bulletSpeed;// forceに前方への力を代入する
             bullets.GetComponent<Rigidbody>().AddForce(force);// bulletsにforceの分だけ力をかける
             Destroy(bullets.gameObject, 4);// 作成されてから4秒後に消す
