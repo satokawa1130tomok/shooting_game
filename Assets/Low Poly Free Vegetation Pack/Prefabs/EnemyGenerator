@@ -1,0 +1,25 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+
+public class NewBehaviourScript : MonoBehaviour
+{
+    private GameObject target;
+    NavMeashAgent agent;
+    // Start is called before the first frame update
+    void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        target = GameObject.find("Tank");
+
+    }
+    ~中略~
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
