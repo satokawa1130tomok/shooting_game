@@ -26,6 +26,7 @@ public class player : MonoBehaviour
 
     public GameObject verRot;//縦回転させるオブジェクト（カメラ）
     public GameObject HorRot;//横回転させるオブジェクト（プレイヤー）
+    public GameObject muzzle;
 
     public GameObject bullet;//発射する弾
 
@@ -76,18 +77,22 @@ public class player : MonoBehaviour
             characterController.Move(this.gameObject.transform.right * MoveSpeed * Time.deltaTime);
 
         }
-        if (Input.GetMouseButton(0))//
+        if (Input.GetKey(KeyCode.Space))
         {
             // GameObject bullets = Instantiate(bullet) as GameObject;
             //bullets.transform.position = this.transform.position;
-            Y = transform.position.y;
-            Instantiate(bullet, new Vector3(transform.position.x, Y, transform.position.z), Quaternion.identity);
-
-            force = this.gameObject.transform.forward * bulletSpeed;
-            bullet.GetComponent<Rigidbody>().AddForce(force);
-            Debug.Log(float.IsNaN(Y));
-            Destroy(bullet.gameObject, 4);
-            
+            //Y = transform.position.y;
+            //Instantiate(bullet, new Vector3(transform.position.x, Y, transform.position.z), Quaternion.identity);
+            //bullet.transform.position = this.transform.position;
+            //force = this.gameObject.transform.forward * bulletSpeed;
+            //bullet.GetComponent<Rigidbody>().AddForce(force);
+            //Debug.Log(float.IsNaN(Y));
+            //Destroy(bullet.gameObject, 4);
+            GameObject bullets = Instantiate(bullet) as GameObject;// bulletを作成し、作成したものはbulletsとする
+            bullets.transform.position = muzzle.transform.position;// bulletsをプレイヤーの場所に移動させる
+            force = this.gameObject.transform.forward * bulletSpeed;// forceに前方への力を代入する
+            bullets.GetComponent<Rigidbody>().AddForce(force);// bulletsにforceの分だけ力をかける
+            Destroy(bullets.gameObject, 4);// 作成されてから4秒後に消す
 
         }
         characterController.Move(Velocity * Time.deltaTime);
