@@ -21,7 +21,7 @@ public class random : MonoBehaviour
     // Update is called once per frame
     void Generste()
     {
-        Debug.Log("a");
+        //Debug.Log("a");
         if (Count < Max) //return;
         {
             X = Random.Range(-5, 5);
@@ -29,7 +29,7 @@ public class random : MonoBehaviour
             z = Random.Range(-5, 5);
             Instantiate(Bullet2_animations, new Vector3(X, y, z),Quaternion.identity);
             Count++;
-            Debug.Log("b");
+            //Debug.Log("b");
         }
                 
     }

@@ -1804,7 +1804,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: e0b89ff53dc0e44adb54e359a47650fb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.23
+      value: 7.7
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e0b89ff53dc0e44adb54e359a47650fb,
         type: 3}
@@ -1814,27 +1814,27 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: e0b89ff53dc0e44adb54e359a47650fb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 71.13
+      value: 38.6
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e0b89ff53dc0e44adb54e359a47650fb,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e0b89ff53dc0e44adb54e359a47650fb,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9773831
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e0b89ff53dc0e44adb54e359a47650fb,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e0b89ff53dc0e44adb54e359a47650fb,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.21147656
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e0b89ff53dc0e44adb54e359a47650fb,
         type: 3}
@@ -1849,7 +1849,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: e0b89ff53dc0e44adb54e359a47650fb,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 155.582
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e0b89ff53dc0e44adb54e359a47650fb,
         type: 3}
@@ -1886,7 +1886,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 0.03
-  m_Radius: 0.01
+  m_Radius: 0.02
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -1917,6 +1917,7 @@ MonoBehaviour:
   muzzle: {fileID: 636799311}
   bullet: {fileID: 3813509013699021327, guid: c92db20dd98b147329f9742c04c3e9f9, type: 3}
   bulletSpeed: 5000
+  bulletcount: 0
 --- !u!114 &1085079793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1951,6 +1952,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 479860077}
   HP: 10
+--- !u!65 &1085079798
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085079790}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.026556207, y: 0.029394247, z: 0.057856835}
+  m_Center: {x: 0.00004662387, y: 0.0060293465, z: 0.014787797}
 --- !u!1001 &1105008034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2274,6 +2288,7 @@ GameObject:
   - component: {fileID: 1328902731}
   - component: {fileID: 1328902730}
   - component: {fileID: 1328902732}
+  - component: {fileID: 1328902733}
   m_Layer: 0
   m_Name: generator
   m_TagString: Untagged
@@ -2303,7 +2318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328902729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1373.3, y: 181.4, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2322,6 +2337,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet2_animations: {fileID: 100000, guid: b2f695bc23f31d848a2fbf5103689a74, type: 3}
+--- !u!114 &1328902733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328902729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d027719db5540f483f03dd1599fb82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammobox: {fileID: 4980960915200084855, guid: cd26f2582922d431fa86c582375b7e80, type: 3}
 --- !u!1001 &1547313123
 PrefabInstance:
   m_ObjectHideFlags: 0

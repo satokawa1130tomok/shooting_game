@@ -22,7 +22,7 @@ public class HPScript : MonoBehaviour
     {
         setSlider.value = HP;
 
-        Debug.Log(HP);
+        //Debug.Log(HP);
 
         if(HP<=0)
         {

@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
             EnemyHP--;
-            Debug.Log("hit");
+            //Debug.Log("hit");
 
         }
     }
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             EnemyHP--;
-            Debug.Log("hit");
+            //Debug.Log("hit");
 
         }
     }

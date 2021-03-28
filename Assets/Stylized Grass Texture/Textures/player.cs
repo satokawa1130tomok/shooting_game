@@ -36,13 +36,14 @@ public class player : MonoBehaviour
     private Vector3 force;//弾を飛ばす力
     private float Y;
 
-
+    public int bulletcount;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+
         characterController = GetComponent<CharacterController>();
+
     }
 
     // Update is called once per frame
@@ -77,24 +78,28 @@ public class player : MonoBehaviour
             characterController.Move(this.gameObject.transform.right * MoveSpeed * Time.deltaTime);
 
         }
-        if (Input.GetKey(KeyCode.B))
+        if (bulletcount > 0)
         {
-            // GameObject bullets = Instantiate(bullet) as GameObject;
-            //bullets.transform.position = this.transform.position;
-            //Y = transform.position.y;
-            //Instantiate(bullet, new Vector3(transform.position.x, Y, transform.position.z), Quaternion.identity);
-            //bullet.transform.position = this.transform.position;
-            //force = this.gameObject.transform.forward * bulletSpeed;
-            //bullet.GetComponent<Rigidbody>().AddForce(force);
-            //Debug.Log(float.IsNaN(Y));
-            //Destroy(bullet.gameObject, 4);
-            GameObject bullets = Instantiate(bullet) as GameObject;// bulletを作成し、作成したものはbulletsとする
-            bullets.transform.position = muzzle.transform.position;// bulletsをプレイヤーの場所に移動させる
-            bullet.transform.rotation = muzzle.transform.rotation;
-            force = this.gameObject.transform.forward * bulletSpeed;// forceに前方への力を代入する
-            bullets.GetComponent<Rigidbody>().AddForce(force);// bulletsにforceの分だけ力をかける
-            Destroy(bullets.gameObject, 4);// 作成されてから4秒後に消す
+            if (Input.GetKey(KeyCode.E))
+            {
+                // GameObject bullets = Instantiate(bullet) as GameObject;
+                //bullets.transform.position = this.transform.position;
+                //Y = transform.position.y;
+                //Instantiate(bullet, new Vector3(transform.position.x, Y, transform.position.z), Quaternion.identity);
+                //bullet.transform.position = this.transform.position;
+                //force = this.gameObject.transform.forward * bulletSpeed;
+                //bullet.GetComponent<Rigidbody>().AddForce(force);
+                //Debug.Log(float.IsNaN(Y));
+                //Destroy(bullet.gameObject, 4);
+                GameObject bullets = Instantiate(bullet) as GameObject;// bulletを作成し、作成したものはbulletsとする
+                bullets.transform.position = muzzle.transform.position;// bulletsをプレイヤーの場所に移動させる
+                bullet.transform.rotation = muzzle.transform.rotation;
+                force = this.gameObject.transform.forward * bulletSpeed;// forceに前方への力を代入する
+                bullets.GetComponent<Rigidbody>().AddForce(force);// bulletsにforceの分だけ力をかける
+                Destroy(bullets.gameObject, 4);//
+                bulletcount--;
 
+            }
         }
         characterController.Move(Velocity * Time.deltaTime);
 
@@ -106,8 +111,40 @@ public class player : MonoBehaviour
                 Velocity.y = JumpPower;
         }
 
-       
 
-    }  
+
+    }
+    //private void Ontriggerenter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "ammo_box2")
+    //    {
+    //        bulletcount++;
+    //        Debug.Log(bulletcount);
+    //    }
+    //}
+    //private void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    if (hit.gameObject.tag == "ammo_box2")
+    //    {
+    //        bulletcount++;
+    //        Debug.Log(bulletcount);
+
+    //    }
+
+
+    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "ammo_box2")
+        {
+            bulletcount++;
+            Debug.Log("hit");
+        }
+
+    }
 }
+    
+    
+     
+
 
