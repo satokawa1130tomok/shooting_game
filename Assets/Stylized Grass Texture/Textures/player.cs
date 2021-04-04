@@ -37,6 +37,7 @@ public class player : MonoBehaviour
     private float Y;
 
     public int bulletcount;
+    public GameObject ammo_box2;   
 
     // Start is called before the first frame update
     void Start()
@@ -137,8 +138,10 @@ public class player : MonoBehaviour
     {
         if (other.gameObject.tag == "ammo_box2")
         {
-            bulletcount++;
+           
+            bulletcount　=+10;
             Debug.Log("hit");
+            Destroy(ammo_box2.gameObject);
         }
 
     }

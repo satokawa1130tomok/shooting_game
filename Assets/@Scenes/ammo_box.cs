@@ -35,9 +35,9 @@ public class ammo_box : MonoBehaviour
 
     void Generate()
     {
-        x = Random.Range(-100, -100);
+        x = Random.Range(-100, 100);
         y = 0;
-        z = Random.Range(100, 100);
+        z = Random.Range(100, -100);
 
         Instantiate(ammobox, new Vector3(x, y, z), Quaternion.identity);
 
