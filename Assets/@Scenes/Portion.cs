@@ -39,5 +39,6 @@ public class Portion : MonoBehaviour
         Instantiate(Potion_clone, new Vector3(x, y, z), Quaternion.identity);
 
     }
+    
 }
 

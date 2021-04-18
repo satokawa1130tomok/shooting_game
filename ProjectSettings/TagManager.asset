@@ -9,6 +9,8 @@ TagManager:
   - EnemyBullet
   - ammo_box
   - ammo
+  - ammo_box2
+  - potion
   layers:
   - Default
   - TransparentFX

@@ -37,7 +37,8 @@ public class player : MonoBehaviour
     private float Y;
 
     public int bulletcount;
-    public GameObject ammo_box2;   
+    public GameObject ammo_box2;
+    public GameObject potion;
 
     // Start is called before the first frame update
     void Start()
@@ -143,8 +144,12 @@ public class player : MonoBehaviour
             Debug.Log("hit");
             Destroy(ammo_box2.gameObject);
         }
-
+        if(other.gameObject.tag == "potion")
+        {
+            Destroy(potion.gameObject);
+        }
     }
+    
 }
     
     

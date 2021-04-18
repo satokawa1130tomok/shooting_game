@@ -9,11 +9,14 @@ public class HPScript : MonoBehaviour
     private Slider setSlider;
     public GameObject slider;
     [SerializeField]
-    private float HP = 10f;
+    private float HP = 20f;
+    public GameObject Portion_clone;
     // Start is called before the first frame update
     void Start()
     {
         setSlider = slider.GetComponent<Slider>();
+
+        Portion_clone.gameObject.SetActive(true);
 
     }
 
@@ -36,5 +39,15 @@ public class HPScript : MonoBehaviour
         {
             HP--;
         }
+        if(other.gameObject.tag  == "potion")
+        {
+            HP =+10;
+
+            Portion_clone.gameObject.SetActive(false);
+
+
+        }
     }
+  
+
 }
