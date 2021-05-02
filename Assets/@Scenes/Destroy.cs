@@ -11,7 +11,7 @@ public class Destroy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("当たった");
+            //Debug.Log("当たった");
             this.gameObject.SetActive(false);
 
         }

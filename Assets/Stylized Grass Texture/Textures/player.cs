@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class player : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class player : MonoBehaviour
     [SerializeField]
     private float MoveSpeed = 10;//移動スピード
 
-    public float sensitivityX = 15F;//マウスのXの動き
-    public float sensitivityY = 15F;//マウスのYの動き
+    public float sensitivitymax = 200F;//マウスのXの動き
+    public float sensitivitynow;//マウスのYの動き
 
     public float minimumX = 360F;//横の回転の最低値
     public float maximumX = 360f;// //      最高値
@@ -40,20 +41,25 @@ public class player : MonoBehaviour
     public GameObject ammo_box2;
     public GameObject potion;
 
+    
+
+  
     // Start is called before the first frame update
     void Start()
     {
 
         characterController = GetComponent<CharacterController>();
 
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        rotetionX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+    
+        rotetionX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * Slidercontroller.now;
 
-        rotetionY += Input.GetAxis("Mouse Y") * sensitivityY;
+        rotetionY += Input.GetAxis("Mouse Y") * Slidercontroller.now;
 
         verRot.transform.localEulerAngles = new Vector3(-rotetionY, 0, 0);
 
