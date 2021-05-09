@@ -16,11 +16,11 @@ public class player : MonoBehaviour
     public float sensitivitymax = 200F;//マウスのXの動き
     public float sensitivitynow;//マウスのYの動き
 
-    public float minimumX = 360F;//横の回転の最低値
-    public float maximumX = 360f;// //      最高値
+    public float minimumX = 300F;//横の回転の最低値
+    public float maximumX = 300f;// //      最高値
 
-    public float minimumY = 360F;//縦の回転の最低値
-    public float maximumY = 360f;// //      最高値
+    public float minimumY = 300F;//縦の回転の最低値
+    public float maximumY = 300f;// //      最高値
 
     float rotetionX = 0f;//　横軸の回転量
     float rotetionY = 0f;//  横軸　
