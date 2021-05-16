@@ -40,15 +40,23 @@ public class player : MonoBehaviour
     public int bulletcount;
     public GameObject ammo_box2;
     public GameObject potion;
+    public Vector3 position;
 
-    
 
-  
+
+
+
     // Start is called before the first frame update
     void Start()
     {
 
         characterController = GetComponent<CharacterController>();
+        if (Canvas_Manager.Spawn_number == 1)
+        {
+            transform.position = new Vector3(0, 0, 0);
+        }
+
+        
 
         
     }
