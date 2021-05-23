@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Slidercontroller : MonoBehaviour
 {
     private Slider mauseslider;
-    public float max=200;
+    public float max=50;
     public static float now=50;
     void Start()
     {

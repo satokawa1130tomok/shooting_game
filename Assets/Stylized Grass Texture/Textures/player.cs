@@ -50,15 +50,32 @@ public class player : MonoBehaviour
     void Start()
     {
 
+
         characterController = GetComponent<CharacterController>();
         if (Canvas_Manager.Spawn_number == 1)
         {
-            transform.position = new Vector3(0, 0, 0);
+            transform.position = new Vector3(0, 1, 0);
+        }
+        if (Canvas_Manager.Spawn_number == 2)
+        {
+            transform.position = new Vector3(122, 1, 3);
+        }
+        if (Canvas_Manager.Spawn_number == 0)
+        {
+            //    = Random.Range(-100, 100);
+            //    = 0;
+            //    = Random.Range(100, -100)
+            transform.position = new Vector3(Random.Range(-200, 200), 100, Random.Range(-100, 100));
         }
 
-        
 
         
+
+
+
+        
+
+
     }
 
     // Update is called once per frame
@@ -116,6 +133,8 @@ public class player : MonoBehaviour
                 bulletcount--;
 
             }
+            
+          
         }
         characterController.Move(Velocity * Time.deltaTime);
 
