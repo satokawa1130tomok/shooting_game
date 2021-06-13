@@ -11,16 +11,22 @@ public class Enemy : MonoBehaviour
     public GameObject generator;
     public game_generator gg;
     public int EnemyHP;
+
+
 [SerializeField]
     private float bulletSeed = 5000;
     Vector3 force;
+    public float distance;
+
+
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         InvokeRepeating("EnemyAttack", 1, 1);
+        //target = GameObject.Find("Tank");
+
         target = GameObject.Find("Tank");
- 
         generator = GameObject.Find("generator");
         gg = generator.GetComponent<game_generator>();
         EnemyHP = 5;
@@ -28,7 +34,20 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
+        Vector3 Apos = this.transform.position;
+        Vector3 Bpos = target.transform.position;
+        float dis = Vector3.Distance(Apos, Bpos);
+        distance = dis;
         agent.destination = target.transform.position;
+        Debug.Log(dis);
+
+        
+        
+         target = GameObject.Find("Tank");
+        
+
+       
+
         if (EnemyHP == 0)
         {
             gg.enemycount++;
@@ -57,12 +76,18 @@ public class Enemy : MonoBehaviour
     }
     void EnemyAttack()
     {
-        GameObject enemyBullets = Instantiate(EnemyBullet)as GameObject;
-        enemyBullets.transform.position = this.transform.position;
-        force = this.gameObject.transform.forward * bulletSeed;
-        enemyBullets.GetComponent<Rigidbody>().AddForce(force);
-        Destroy(enemyBullets.gameObject, 4);
+        
+        if (distance<60)
+        {
+            
 
+           GameObject enemyBullets = Instantiate(EnemyBullet) as GameObject;
+           enemyBullets.transform.position = this.transform.position;
+           force = this.gameObject.transform.forward * bulletSeed;
+           enemyBullets.GetComponent<Rigidbody>().AddForce(force);
+           Destroy(enemyBullets.gameObject, 4);
+        }
+        
     }
 }
 
