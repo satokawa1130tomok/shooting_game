@@ -3776,10 +3776,10 @@ MonoBehaviour:
   MoveSpeed: 10
   sensitivitymax: 200
   sensitivitynow: 0
-  minimumX: 360
-  maximumX: 360
-  minimumY: 360
-  maximumY: 360
+  minimumX: 300
+  maximumX: 300
+  minimumY: 300
+  maximumY: 300
   verRot: {fileID: 963194225}
   HorRot: {fileID: 1085079790}
   muzzle: {fileID: 636799311}
@@ -3788,7 +3788,7 @@ MonoBehaviour:
   bulletcount: 0
   ammo_box2: {fileID: 4980960915200084855, guid: cd26f2582922d431fa86c582375b7e80,
     type: 3}
-  potion: {fileID: 609641088}
+  potion: {fileID: -927199367670048503, guid: 2ee914c0b7c414c55825aa808521bb74, type: 3}
   position: {x: 0, y: 0, z: 0}
 --- !u!114 &1085079793
 MonoBehaviour:
@@ -3835,8 +3835,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 479860077}
-  HP: 10
-  Portion_clone: {fileID: 609641088}
+  HP: 20
+  Portion_clone: {fileID: -927199367670048503, guid: 2ee914c0b7c414c55825aa808521bb74,
+    type: 3}
 --- !u!65 &1085079798
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4546,7 +4547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cc32e40c9da4c948a79d8d4f688583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet2_animations: {fileID: 100000, guid: b2f695bc23f31d848a2fbf5103689a74, type: 3}
+  Bullet2_animations: {fileID: 0}
 --- !u!114 &1328902733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4572,7 +4573,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab3a0322bddf49b6a648c2e58d8e04b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Potion_clone: {fileID: 609641088}
+  Potion_clone: {fileID: -927199367670048503, guid: 2ee914c0b7c414c55825aa808521bb74,
+    type: 3}
 --- !u!1001 &1363095556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4828,7 +4830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e675f3ae2d76548ae90b2cb6a5375687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1085079790}
+  player: {fileID: 0}
 --- !u!1 &1501330991
 GameObject:
   m_ObjectHideFlags: 0
@@ -5193,7 +5195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e675f3ae2d76548ae90b2cb6a5375687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1085079790}
+  player: {fileID: 0}
 --- !u!65 &1618907449
 BoxCollider:
   m_ObjectHideFlags: 0

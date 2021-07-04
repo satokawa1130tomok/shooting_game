@@ -34,13 +34,13 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
-        Vector3 Apos = this.transform.position;
+ 
+       Vector3 Apos = this.transform.position;
         Vector3 Bpos = target.transform.position;
         float dis = Vector3.Distance(Apos, Bpos);
         distance = dis;
         agent.destination = target.transform.position;
         Debug.Log(dis);
-
         
         
          target = GameObject.Find("Tank");
@@ -52,6 +52,15 @@ public class Enemy : MonoBehaviour
         {
             gg.enemycount++;
             Destroy(this.gameObject);
+        }
+        if (distance < 120)
+        {
+            agent.enabled = true;
+            
+        }
+        else
+        {
+            agent.enabled = false;
         }
 
     }
@@ -80,7 +89,7 @@ public class Enemy : MonoBehaviour
         if (distance<60)
         {
             
-
+      
            GameObject enemyBullets = Instantiate(EnemyBullet) as GameObject;
            enemyBullets.transform.position = this.transform.position;
            force = this.gameObject.transform.forward * bulletSeed;
