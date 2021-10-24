@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+//using Photon.Pun;
 
 public class player : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class player : MonoBehaviour
     public GameObject potion;
     public Vector3 position;
 
-
+    
 
 
 
@@ -69,11 +70,11 @@ public class player : MonoBehaviour
         }
 
 
-        
 
 
+        //this.myPhotonView = GetComponent<PhotonView>();
 
-        
+
 
 
     }
