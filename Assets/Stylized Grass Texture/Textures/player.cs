@@ -175,7 +175,7 @@ public class player : MonoBehaviour
         {
            
             bulletcount　=+10;
-            Debug.Log("hit");
+            //Debug.Log("hit");
             Destroy(ammo_box2.gameObject);
         }
         //if (other.gameObject.tag == "potion")

@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
         float dis = Vector3.Distance(Apos, Bpos);
         distance = dis;
         agent.destination = target.transform.position;
-        Debug.Log(dis);
+        
         
         
          target = GameObject.Find("Tank");
