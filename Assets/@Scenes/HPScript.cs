@@ -14,6 +14,7 @@ public class HPScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.slider = GameObject.FindWithTag("slider");
         setSlider = slider.GetComponent<Slider>();
 
         Portion_clone.gameObject.SetActive(true);

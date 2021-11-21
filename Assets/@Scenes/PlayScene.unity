@@ -519,7 +519,6 @@ GameObject:
   - component: {fileID: 114907549}
   - component: {fileID: 114907548}
   - component: {fileID: 114907547}
-  - component: {fileID: 114907550}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -585,19 +584,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114907550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114907546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70d027719db5540f483f03dd1599fb82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammobox: {fileID: 0}
 --- !u!1001 &135204299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -712,7 +698,7 @@ PrefabInstance:
     - target: {fileID: 2432904925950184502, guid: 5bec60f4b2bc22b4fa1dcca2ca18225f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 35
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 2432904925950184502, guid: 5bec60f4b2bc22b4fa1dcca2ca18225f,
         type: 3}
@@ -1133,7 +1119,7 @@ PrefabInstance:
     - target: {fileID: 4262527595393066397, guid: 18af26af61ee8234caa44dc89f89d5cf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 4262527595393066397, guid: 18af26af61ee8234caa44dc89f89d5cf,
         type: 3}
@@ -1808,7 +1794,7 @@ GameObject:
   - component: {fileID: 479860079}
   m_Layer: 5
   m_Name: Slider
-  m_TagString: Untagged
+  m_TagString: slider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3279,7 +3265,7 @@ PrefabInstance:
     - target: {fileID: 495199302255225335, guid: 06573cc19fb2e4a479092a9b4687b26c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 37
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 495199302255225335, guid: 06573cc19fb2e4a479092a9b4687b26c,
         type: 3}
@@ -5632,7 +5618,7 @@ GameObject:
   - component: {fileID: 1917561929}
   m_Layer: 5
   m_Name: Text
-  m_TagString: Untagged
+  m_TagString: text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5792,6 +5778,7 @@ GameObject:
   - component: {fileID: 1971004402}
   - component: {fileID: 1971004401}
   - component: {fileID: 1971004403}
+  - component: {fileID: 1971004404}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -5837,6 +5824,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3cf1ac17f994f8aae248150d67228a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1971004404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971004400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27215d146b31c4ccb93b5f93e9c764d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originObject: {fileID: 6398925403259683593, guid: a1eb736fd7ceb4c14948992c7f868084,
+    type: 3}
 --- !u!1 &1972326673
 GameObject:
   m_ObjectHideFlags: 0
@@ -6211,7 +6212,7 @@ PrefabInstance:
     - target: {fileID: 7326308086656437384, guid: 81d960fe44e3f6b46bcda7b24988e254,
         type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 7326308086656437384, guid: 81d960fe44e3f6b46bcda7b24988e254,
         type: 3}

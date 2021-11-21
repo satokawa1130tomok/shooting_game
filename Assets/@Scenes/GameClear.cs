@@ -7,11 +7,12 @@ public class GameClear : MonoBehaviour
 {
 
     public GameObject[] enemyObjects;
-    public GameObject ClearText;
+    public GameObject　ClearText ;
 
     // Start is called before the first frame update
     void Start()
     {
+        this.ClearText = GameObject.FindWithTag("text");
         ClearText.GetComponent<Text>().enabled = false;
         enemyObjects = GameObject.FindGameObjectsWithTag("Tank (1)");
 

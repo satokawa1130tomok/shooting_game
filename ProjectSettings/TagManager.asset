@@ -11,6 +11,8 @@ TagManager:
   - ammo
   - ammo_box2
   - potion
+  - slider
+  - text
   layers:
   - Default
   - TransparentFX
