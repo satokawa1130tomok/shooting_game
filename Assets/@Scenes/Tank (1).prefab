@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 7070723392767678608}
   - component: {fileID: -3736005675054902437}
   - component: {fileID: -6469189899444979467}
+  - component: {fileID: 2393550655998901031}
+  - component: {fileID: 7430134516817128450}
   m_Layer: 0
   m_Name: Tank (1)
   m_TagString: Tank (1)
@@ -167,3 +169,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.029394247, z: 0.057856835}
   m_Center: {x: 0.00004662387, y: 0.0060293465, z: 0.014787797}
+--- !u!114 &2393550655998901031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765394506560239780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &7430134516817128450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765394506560239780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 2393550655998901031}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

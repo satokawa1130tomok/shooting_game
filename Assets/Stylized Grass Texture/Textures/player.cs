@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-
-//using Photon.Pun;
+﻿using Photon.Pun;
+using UnityEngine;
 
 public class player : MonoBehaviour
 {
@@ -21,7 +20,7 @@ public class player : MonoBehaviour
     public float maximumY = 300f;// //      最高値
 
     float rotetionX = 0f;//　横軸の回転量
-    float rotetionY = 0f;//  横軸　
+    float rotetionY = 0f;//  横軸
 
     public GameObject verRot;//縦回転させるオブジェクト（カメラ）
     public GameObject HorRot;//横回転させるオブジェクト（プレイヤー）
@@ -39,15 +38,15 @@ public class player : MonoBehaviour
     public GameObject ammo_box2;
     public GameObject potion;
     public Vector3 position;
-
-    
-
-
+    PhotonView myPhtonView;
+    #region
 
     // Start is called before the first frame update
+    #endregion
     void Start()
     {
-
+        verRot = GameObject.FindGameObjectWithTag("MainCamera");
+        this.myPhtonView = GetComponent<PhotonView>();
 
         characterController = GetComponent<CharacterController>();
         if (Canvas_Manager.Spawn_number == 1)
@@ -60,93 +59,36 @@ public class player : MonoBehaviour
         }
         if (Canvas_Manager.Spawn_number == 0)
         {
+            #region
             //    = Random.Range(-100, 100);
             //    = 0;
             //    = Random.Range(100, -100)
+            #endregion
             transform.position = new Vector3(Random.Range(-200, 200), 100, Random.Range(-100, 100));
         }
-
-
-
+        
+       #region
 
         //this.myPhotonView = GetComponent<PhotonView>();
 
-
-
-
+        #endregion
     }
-
+    #region
     // Update is called once per frame
+    #endregion
     void Update()
     {
-    
-        rotetionX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * Slidercontroller.now;
-
-        rotetionY += Input.GetAxis("Mouse Y") * Slidercontroller.now;
-
-        verRot.transform.localEulerAngles = new Vector3(-rotetionY, 0, 0);
-
-        HorRot.transform.localEulerAngles = new Vector3(0, rotetionX, 0);
-
-        if (Input.GetKey(KeyCode.W))
+        if (this.myPhtonView.IsMine)
         {
-            characterController.Move(this.gameObject.transform.forward * MoveSpeed * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            characterController.Move(this.gameObject.transform.forward * -1f * MoveSpeed * Time.deltaTime);
-
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            characterController.Move(this.gameObject.transform.right * -1 * MoveSpeed * Time.deltaTime);
-
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            characterController.Move(this.gameObject.transform.right * MoveSpeed * Time.deltaTime);
-
-        }
-        if (bulletcount > 0)
-        {
-            if (Input.GetKey(KeyCode.E))
-            {
-                // GameObject bullets = Instantiate(bullet) as GameObject;
-                //bullets.transform.position = this.transform.position;
-                //Y = transform.position.y;
-                //Instantiate(bullet, new Vector3(transform.position.x, Y, transform.position.z), Quaternion.identity);
-                //bullet.transform.position = this.transform.position;
-                //force = this.gameObject.transform.forward * bulletSpeed;
-                //bullet.GetComponent<Rigidbody>().AddForce(force);
-                //Debug.Log(float.IsNaN(Y));
-                //Destroy(bullet.gameObject, 4);
-                GameObject bullets = Instantiate(bullet) as GameObject;// bulletを作成し、作成したものはbulletsとする
-                bullets.transform.position = muzzle.transform.position;// bulletsをプレイヤーの場所に移動させる
-                bullet.transform.rotation = muzzle.transform.rotation;
-                force = this.gameObject.transform.forward * bulletSpeed;// forceに前方への力を代入する
-                bullets.GetComponent<Rigidbody>().AddForce(force);// bulletsにforceの分だけ力をかける
-                Destroy(bullets.gameObject, 4);//
-                bulletcount--;
-
-            }
             
-          
+            Playermove();
+            Jump();
+            Rotetion();
+            Bullet_();
+           
         }
-        characterController.Move(Velocity * Time.deltaTime);
-
-        Velocity.y += Physics.gravity.y * Time.deltaTime;
-
-        if (characterController.isGrounded)
-        {
-            if (Input.GetKey(KeyCode.Space))
-                Velocity.y = JumpPower;
-        }
-
-
-
     }
+    #region
     //private void Ontriggerenter(Collider other)
     //{
     //    if (other.gameObject.tag == "ammo_box2")
@@ -166,24 +108,103 @@ public class player : MonoBehaviour
 
 
     //}
+    #endregion
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "ammo_box2")
         {
-           
-            bulletcount　=+10;
-          
+            bulletcount = +10;
+
             Destroy(ammo_box2.gameObject);
         }
+        #region
+
         //if (other.gameObject.tag == "potion")
         //{
         //    Destroy(potion.gameObject);
         //}
+
+        #endregion
     }
-    
+    void Playermove()
+    {
+        Debug.Log("_");
+        if (Input.GetKey(KeyCode.W))
+        {
+            characterController.Move(this.gameObject.transform.forward * MoveSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            characterController.Move(this.gameObject.transform.forward * -1f * MoveSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            characterController.Move(this.gameObject.transform.right * -1 * MoveSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            characterController.Move(this.gameObject.transform.right * MoveSpeed * Time.deltaTime);
+        }
+    }
+    void Jump()
+    {
+        if (characterController.isGrounded)
+        {
+            if (Input.GetKey(KeyCode.Space))
+                Velocity.y = JumpPower;
+        }
+
+    }
+    void Bullet_()
+    {
+        if (bulletcount > 0)
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                #region
+                // GameObject bullets = Instantiate(bullet) as GameObject;
+                //bullets.transform.position = this.transform.position;
+                //Y = transform.position.y;
+                //Instantiate(bullet, new Vector3(transform.position.x, Y, transform.position.z), Quaternion.identity);
+                //bullet.transform.position = this.transform.position;
+                //force = this.gameObject.transform.forward * bulletSpeed;
+                //bullet.GetComponent<Rigidbody>().AddForce(force);
+                //Debug.Log(float.IsNaN(Y));
+                //Destroy(bullet.gameObject, 4);
+                #endregion
+                GameObject bullets = Instantiate(bullet) as GameObject;// bulletを作成し、作成したものはbulletsとする
+                bullets.transform.position = muzzle.transform.position;// bulletsをプレイヤーの場所に移動させる
+                bullet.transform.rotation = muzzle.transform.rotation;
+                force = this.gameObject.transform.forward * bulletSpeed;// forceに前方への力を代入する
+                bullets.GetComponent<Rigidbody>().AddForce(force);// bulletsにforceの分だけ力をかける
+                Destroy(bullets.gameObject, 4);//
+                bulletcount--;
+            }
+
+
+        }
+    }
+    void Rotetion()
+    {
+        rotetionX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * Slidercontroller.now;
+
+        rotetionY += Input.GetAxis("Mouse Y") * Slidercontroller.now;
+
+        verRot.transform.localEulerAngles = new Vector3(-rotetionY, 0, 0);
+
+        HorRot.transform.localEulerAngles = new Vector3(0, rotetionX, 0);
+
+        characterController.Move(Velocity * Time.deltaTime);
+
+        Velocity.y += Physics.gravity.y * Time.deltaTime;
+    }
+
 }
-    
-    
-     
+
+
+
 
 
