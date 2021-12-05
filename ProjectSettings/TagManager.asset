@@ -13,6 +13,7 @@ TagManager:
   - potion
   - slider
   - text
+  - MainCamera_
   layers:
   - Default
   - TransparentFX

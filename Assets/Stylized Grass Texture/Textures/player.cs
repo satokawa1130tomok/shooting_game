@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-    private CharacterController characterController;
+    private CharacterController cc;
     private Vector3 Velocity;
     [SerializeField]
     private float JumpPower = 8;//ジャンプ力
@@ -41,14 +41,22 @@ public class player : MonoBehaviour
     PhotonView myPhtonView;
     #region
 
+    public float x_;
+    public float y_;
+    public float z_;
+
+
     // Start is called before the first frame update
     #endregion
     void Start()
     {
-        verRot = GameObject.FindGameObjectWithTag("MainCamera");
+
+        HorRot = this.gameObject;
+
+        verRot = GameObject.FindGameObjectWithTag("MainCamera_");
         this.myPhtonView = GetComponent<PhotonView>();
 
-        characterController = GetComponent<CharacterController>();
+        cc = GetComponent<CharacterController>();
         if (Canvas_Manager.Spawn_number == 1)
         {
             transform.position = new Vector3(0, 1, 0);
@@ -68,7 +76,7 @@ public class player : MonoBehaviour
         }
         
        #region
-
+        
         //this.myPhotonView = GetComponent<PhotonView>();
 
         #endregion
@@ -129,29 +137,30 @@ public class player : MonoBehaviour
     }
     void Playermove()
     {
-        Debug.Log("_");
+        //Debug.Log("_");
         if (Input.GetKey(KeyCode.W))
         {
-            characterController.Move(this.gameObject.transform.forward * MoveSpeed * Time.deltaTime);
+            //z方向に進む
+           cc.Move(transform.forward * MoveSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            characterController.Move(this.gameObject.transform.forward * -1f * MoveSpeed * Time.deltaTime);
+            cc.Move(transform.forward * -1f * MoveSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            characterController.Move(this.gameObject.transform.right * -1 * MoveSpeed * Time.deltaTime);
+           cc.Move(transform.right * -1 * MoveSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            characterController.Move(this.gameObject.transform.right * MoveSpeed * Time.deltaTime);
+            cc.Move(transform.right * MoveSpeed * Time.deltaTime);
         }
     }
     void Jump()
     {
-        if (characterController.isGrounded)
+        if (cc.isGrounded)
         {
             if (Input.GetKey(KeyCode.Space))
                 Velocity.y = JumpPower;
@@ -189,17 +198,29 @@ public class player : MonoBehaviour
     }
     void Rotetion()
     {
+        
+
         rotetionX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * Slidercontroller.now;
 
         rotetionY += Input.GetAxis("Mouse Y") * Slidercontroller.now;
 
         verRot.transform.localEulerAngles = new Vector3(-rotetionY, 0, 0);
 
+        x_ = this.transform.position.x;
+        y_ = this.transform.position.y;
+        z_ = this.transform.position.z;
+
+        verRot.transform.position = new Vector3(x_, y_+5,z_-5) ;
+
         HorRot.transform.localEulerAngles = new Vector3(0, rotetionX, 0);
 
-        characterController.Move(Velocity * Time.deltaTime);
+        cc.Move(Velocity * Time.deltaTime);
 
         Velocity.y += Physics.gravity.y * Time.deltaTime;
+
+        Debug.Log(verRot.transform.position);
+
+
     }
 
 }
