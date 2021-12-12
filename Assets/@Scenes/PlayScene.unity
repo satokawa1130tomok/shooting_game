@@ -1573,6 +1573,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: d9aae4951d944bf4e814212adf63ea00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9aae4951d944bf4e814212adf63ea00, type: 3}
 --- !u!1001 &433898476
@@ -5767,8 +5771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27215d146b31c4ccb93b5f93e9c764d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originObject: {fileID: 6398925403259683593, guid: a1eb736fd7ceb4c14948992c7f868084,
-    type: 3}
 --- !u!1 &1972326673
 GameObject:
   m_ObjectHideFlags: 0

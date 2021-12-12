@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2148990684616403108}
   - component: {fileID: 4765767882711822554}
   - component: {fileID: -1107584273231248984}
+  - component: {fileID: 6250083094812776324}
   m_Layer: 0
   m_Name: player
   m_TagString: Tank (1)
@@ -221,3 +222,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.026556207, y: 0.029394247, z: 0.057856835}
   m_Center: {x: 0.00004662387, y: 0.0060293465, z: 0.014787797}
+--- !u!114 &6250083094812776324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2931405383574734245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd08475b23aa548b7b9d28397d430b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 7
+  height: 3
+  centerOffset: {x: 0, y: 0, z: 0}
+  followOnStart: 0
+  smoothSpeed: 0.125

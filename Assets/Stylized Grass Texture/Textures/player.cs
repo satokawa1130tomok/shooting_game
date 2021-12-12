@@ -48,15 +48,20 @@ public class player : MonoBehaviour
 
     // Start is called before the first frame update
     #endregion
+
+    private CameraWork cameraWork;
     void Start()
     {
-
+        
         HorRot = this.gameObject;
 
         verRot = GameObject.FindGameObjectWithTag("MainCamera_");
         this.myPhtonView = GetComponent<PhotonView>();
 
         cc = GetComponent<CharacterController>();
+
+        cameraWork = GetComponent<CameraWork>();
+
         if (Canvas_Manager.Spawn_number == 1)
         {
             transform.position = new Vector3(0, 1, 0);
@@ -86,14 +91,19 @@ public class player : MonoBehaviour
     #endregion
     void Update()
     {
-        if (this.myPhtonView.IsMine)
+        if (cameraWork != null)
         {
-            
-            Playermove();
-            Jump();
-            Rotetion();
-            Bullet_();
-           
+            if (this.myPhtonView.IsMine)
+            {
+
+
+                cameraWork.OnStartFollowing();
+                Playermove();
+                Jump();
+                //Rotetion();
+                Bullet_();
+
+            }
         }
     }
     #region
@@ -218,7 +228,7 @@ public class player : MonoBehaviour
 
         Velocity.y += Physics.gravity.y * Time.deltaTime;
 
-        Debug.Log(verRot.transform.position);
+        //Debug.Log(verRot.transform.position);
 
 
     }

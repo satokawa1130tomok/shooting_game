@@ -1,29 +1,29 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright file="CameraWork.cs" company="Exit Games GmbH">
-//   Part of: Photon Unity Networking Demos
+//  一部：PhotonUnityネットワーキングデモ
 // </copyright>
 // <summary>
-//  Used in PUN Basics Tutorial to deal with the Camera work to follow the player
+//  PUNの基本チュートリアルで、プレーヤーをフォローするためのカメラ作業を処理するために使用されます
 // </summary>
 // <author>developer@exitgames.com</author>
 // --------------------------------------------------------------------------------------------------------------------
 
 using UnityEngine;
 
-namespace Photon.Pun.Demo.PunBasics
+namespace Photon.Pun.Demo.PunBasics 
 {
 	/// <summary>
-	/// Camera work. Follow a target
+	/// カメラワーク。 ターゲットをフォローする
 	/// </summary>
-	public class CameraWork : MonoBehaviour
+	public class CameraWork : MonoBehaviour 
 	{
         #region Private Fields
 
 	    [Tooltip("The distance in the local x-z plane to the target")]
 	    [SerializeField]
 	    private float distance = 7.0f;
-	    
-	    [Tooltip("The height we want the camera to be above the target")]
+			
+	    [Tooltip("The height we want the camera to be above the target")]	
 	    [SerializeField]
 	    private float height = 3.0f;
 	    
@@ -39,26 +39,26 @@ namespace Photon.Pun.Demo.PunBasics
 	    [SerializeField]
 	    private float smoothSpeed = 0.125f;
 
-        // cached transform of the target
-        Transform cameraTransform;
+		// ターゲットのキャッシュされた変換
+		Transform cameraTransform;
 
-		// maintain a flag internally to reconnect if target is lost or camera is switched
+		// ターゲットが失われたり、カメラが切り替えられた場合に再接続するために、内部でフラグを維持します
 		bool isFollowing;
-		
-		// Cache for camera offset
+
+		// カメラオフセット用のキャッシュ
 		Vector3 cameraOffset = Vector3.zero;
-		
-		
+
+
         #endregion
 
         #region MonoBehaviour Callbacks
 
         /// <summary>
-        /// MonoBehaviour method called on GameObject by Unity during initialization phase
+        /// 初期化フェーズ中にUnityによってGameObjectで呼び出されるMonoBehaviourメソッド
         /// </summary>
         void Start()
 		{
-			// Start following the target if wanted.
+			// 必要に応じて、ターゲットの追跡を開始します。
 			if (followOnStart)
 			{
 				OnStartFollowing();
@@ -68,14 +68,14 @@ namespace Photon.Pun.Demo.PunBasics
 
 		void LateUpdate()
 		{
-			// The transform target may not destroy on level load, 
-			// so we need to cover corner cases where the Main Camera is different everytime we load a new scene, and reconnect when that happens
+			// 変換ターゲットは、レベルの負荷で破壊されない場合があります。
+			// そのため、新しいシーンをロードするたびにメインカメラが異なるコーナーケースをカバーし、それが発生したときに再接続する必要があります
 			if (cameraTransform == null && isFollowing)
 			{
 				OnStartFollowing();
 			}
 
-			// only follow is explicitly declared
+			// フォローのみが明示的に宣言されています
 			if (isFollowing) {
 				Follow ();
 			}
@@ -86,23 +86,23 @@ namespace Photon.Pun.Demo.PunBasics
 		#region Public Methods
 
 		/// <summary>
-		/// Raises the start following event. 
-		/// Use this when you don't know at the time of editing what to follow, typically instances managed by the photon network.
+		/// スタートフォローイベントを発生させます。
+		//これは、フォローする内容がわからない場合に使用します。通常、インスタンスはフォトンネットワークによって管理されます。
 		/// </summary>
 		public void OnStartFollowing()
 		{	      
 			cameraTransform = Camera.main.transform;
 			isFollowing = true;
-			// we don't smooth anything, we go straight to the right camera shot
+			// 何もスムーズにせず、正しいカメラショットに直行します
 			Cut();
-		}
-		
+		}																					
+
 		#endregion
 
 		#region Private Methods
 
 		/// <summary>
-		/// Follow the target smoothly
+		/// ターゲットをスムーズにフォロー
 		/// </summary>
 		void Follow()
 		{
