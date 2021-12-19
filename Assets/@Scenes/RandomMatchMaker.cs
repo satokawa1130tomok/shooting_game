@@ -10,6 +10,12 @@ using UnityEngine.SceneManagement;
 public class RandomMatchMaker : MonoBehaviourPunCallbacks
 {
 
+    Vector3 spawnPosition = new Vector3(0, 10, 0);
+
+    public GameObject avatar;
+
+    public GameObject camera_;
+
     private GUIStyle style;
 
     // Start is called before the first frame update
@@ -54,7 +60,14 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
         Debug.Log("Joined");
         //キャラクターを生成
         //GameObject monster = PhotonNetwork.Instantiate("Tank", Vector3.zero, Quaternion.identity, 0);
-        SceneManager.LoadScene("PlayScene");
+
+        //SceneManager.LoadScene("PlayScene");
+
+        SceneManager.LoadScene("test");
+
+        GameObject avater = PhotonNetwork.Instantiate("player_", spawnPosition, Quaternion.identity, 0);
+        camera_.transform.parent = avatar.transform;
+        camera_.transform.position = avatar.transform.position;
     }
 
     private string GetDebuggerDisplay()
