@@ -21,7 +21,9 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        //Photonサバに接続
         PhotonNetwork.ConnectUsingSettings();
+
         style = new GUIStyle();
         style.fontSize = 30;
     }
@@ -41,21 +43,25 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
+
         Debug.Log("ルームに接続中…");
         PhotonNetwork.JoinRandomRoom();
     }
     //マスターサーバーに接続したら
     public override void OnConnectedToMaster()
     {
-
+        
         Debug.Log("ルーム作成中…");
         // "room"という名前のルームに参加する（ルームが無ければ作成してから参加する）
         PhotonNetwork.JoinOrCreateRoom("room", new RoomOptions(), TypedLobby.Default);
     }
 
+    //roomに接続した時
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.IsMessageQueueRunning = false;
+        
+        //PhotonNetwork.IsMessageQueueRunning = false;
+
         // シーンをバックグラウンドで非同期にロード SceneManager.LoadSceneAsync("PlayScene", LoadSceneMode.Single);
         Debug.Log("Joined");
         //キャラクターを生成
@@ -63,11 +69,16 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
 
         //SceneManager.LoadScene("PlayScene");
 
-        SceneManager.LoadScene("test");
+        
 
+        //----------------------------------------------------------------------------------------------------------
+        //                               　↓クローンを作る　生成する名前　スポーン場所　　　回転していない　　　　　０
         GameObject avater = PhotonNetwork.Instantiate("player_", spawnPosition, Quaternion.identity, 0);
-        camera_.transform.parent = avatar.transform;
-        camera_.transform.position = avatar.transform.position;
+        //----------------------------------------------------------------------------------------------------------
+        //camera_.transform.parent = avatar.transform;
+        //camera_.transform.position = avatar.transform.position;
+
+        //SceneManager.LoadScene("test");
     }
 
     private string GetDebuggerDisplay()
@@ -75,7 +86,6 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
         return ToString();
     }
 }
-
 
 
 

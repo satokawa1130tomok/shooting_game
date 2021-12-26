@@ -41,5 +41,5 @@ public class EnemyGenerator : MonoBehaviour
             Count++;
         }
     }
-
+    
 }

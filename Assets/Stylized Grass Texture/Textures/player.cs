@@ -54,8 +54,9 @@ public class player : MonoBehaviour
     {
         
         HorRot = this.gameObject;
-
+        bullet = GameObject.FindGameObjectWithTag("Bullet");
         verRot = GameObject.FindGameObjectWithTag("MainCamera_");
+        ammo_box2 = GameObject.FindGameObjectWithTag("ammo_box");
         this.myPhtonView = GetComponent<PhotonView>();
 
         cc = GetComponent<CharacterController>();
