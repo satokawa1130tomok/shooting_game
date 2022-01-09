@@ -244,6 +244,7 @@ MonoBehaviour:
   x_: 0
   y_: 0
   z_: 0
+  rd: {fileID: 0}
 --- !u!114 &4720078665192573020
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class RandomMatchMaker : MonoBehaviourPunCallbacks
 {
 
-    Vector3 spawnPosition = new Vector3(0, 10, 0);
+    Vector3 spawnPosition = new Vector3(0, 1, 0);
 
     public GameObject avatar;
 
@@ -72,8 +72,8 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
         
 
         //----------------------------------------------------------------------------------------------------------
-        //                               　↓クローンを作る　生成する名前　スポーン場所　　　回転していない　　　　　０
-        GameObject avater = PhotonNetwork.Instantiate("player_", spawnPosition, Quaternion.identity, 0);
+        //            ↓クローンを作る　生成する名前　スポーン場所　　　回転していない　　　　　０
+         PhotonNetwork.Instantiate("player_", new Vector3(0,1,0), Quaternion.identity, 0);
         //----------------------------------------------------------------------------------------------------------
         //camera_.transform.parent = avatar.transform;
         //camera_.transform.position = avatar.transform.position;

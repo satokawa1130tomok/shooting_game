@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-    private CharacterController cc;
+   // public float speed = 3.0f;
+
+    //private CharacterController cc;
     private Vector3 Velocity;
     [SerializeField]
     private float JumpPower = 8;//ジャンプ力
@@ -44,6 +46,7 @@ public class player : MonoBehaviour
     public float x_;
     public float y_;
     public float z_;
+    public Rigidbody rd;
 
 
     // Start is called before the first frame update
@@ -52,6 +55,8 @@ public class player : MonoBehaviour
     private CameraWork cameraWork;
     void Start()
     {
+        rd = GetComponent<Rigidbody>();
+           
         
         HorRot = this.gameObject;
         bullet = GameObject.FindGameObjectWithTag("Bullet");
@@ -59,7 +64,7 @@ public class player : MonoBehaviour
         ammo_box2 = GameObject.FindGameObjectWithTag("ammo_box");
         this.myPhtonView = GetComponent<PhotonView>();
 
-        cc = GetComponent<CharacterController>();
+        //cc = GetComponent<CharacterController>();
 
         cameraWork = GetComponent<CameraWork>();
 
@@ -92,20 +97,20 @@ public class player : MonoBehaviour
     #endregion
     void Update()
     {
-        if (cameraWork != null)
-        {
+        
+        
             if (this.myPhtonView.IsMine)
             {
 
 
-                cameraWork.OnStartFollowing();
+                //cameraWork.OnStartFollowing();
                 Playermove();
-                Jump();
+                //Jump();
                 //Rotetion();
                 Bullet_();
 
             }
-        }
+        
     }
     #region
     //private void Ontriggerenter(Collider other)
@@ -148,34 +153,35 @@ public class player : MonoBehaviour
     }
     void Playermove()
     {
-        //Debug.Log("_");
+
+        
         if (Input.GetKey(KeyCode.W))
         {
             //z方向に進む
-           cc.Move(transform.forward * MoveSpeed * Time.deltaTime);
+           rd.MovePosition(transform.position + transform.forward * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            cc.Move(transform.forward * -1f * MoveSpeed * Time.deltaTime);
+            rd.MovePosition(transform.forward * -1f * MoveSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-           cc.Move(transform.right * -1 * MoveSpeed * Time.deltaTime);
+            rd.MovePosition(transform.right * -1 * MoveSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            cc.Move(transform.right * MoveSpeed * Time.deltaTime);
+            rd.MovePosition(transform.right * MoveSpeed * Time.deltaTime);
         }
     }
     void Jump()
     {
-        if (cc.isGrounded)
-        {
-            if (Input.GetKey(KeyCode.Space))
-                Velocity.y = JumpPower;
-        }
+       // if (cc.isGrounded)
+        //{
+           // if (Input.GetKey(KeyCode.Space))
+                //elocity.y = JumpPower;
+       // }
 
     }
     void Bullet_()
@@ -225,7 +231,7 @@ public class player : MonoBehaviour
 
         HorRot.transform.localEulerAngles = new Vector3(0, rotetionX, 0);
 
-        cc.Move(Velocity * Time.deltaTime);
+       // cc.Move(Velocity * Time.deltaTime);
 
         Velocity.y += Physics.gravity.y * Time.deltaTime;
 
