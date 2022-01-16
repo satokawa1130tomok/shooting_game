@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-   // public float speed = 3.0f;
+    // public float speed = 3.0f;
 
     //private CharacterController cc;
     private Vector3 Velocity;
@@ -49,6 +49,17 @@ public class player : MonoBehaviour
     public Rigidbody rd;
 
 
+    public float speed = 10.0f;
+
+
+    public float rotationSpeed = 10.0f;
+
+    public float ws;
+    public float ad;
+
+    public Vector3 move_position_;
+
+    public Vector3 zyx;
     // Start is called before the first frame update
     #endregion
 
@@ -56,8 +67,8 @@ public class player : MonoBehaviour
     void Start()
     {
         rd = GetComponent<Rigidbody>();
-           
-        
+
+
         HorRot = this.gameObject;
         bullet = GameObject.FindGameObjectWithTag("Bullet");
         verRot = GameObject.FindGameObjectWithTag("MainCamera_");
@@ -83,11 +94,14 @@ public class player : MonoBehaviour
             //    = 0;
             //    = Random.Range(100, -100)
             #endregion
-            transform.position = new Vector3(Random.Range(-200, 200), 100, Random.Range(-100, 100));
+
+
+
+            //transform.position = new Vector3(Random.Range(-200, 200), 100, Random.Range(-100, 100));
         }
-        
-       #region
-        
+
+        #region
+
         //this.myPhotonView = GetComponent<PhotonView>();
 
         #endregion
@@ -97,20 +111,20 @@ public class player : MonoBehaviour
     #endregion
     void Update()
     {
-        
-        
-            if (this.myPhtonView.IsMine)
-            {
 
 
-                //cameraWork.OnStartFollowing();
-                Playermove();
-                //Jump();
-                //Rotetion();
-                Bullet_();
+        if (this.myPhtonView.IsMine)
+        {
 
-            }
-        
+
+            //cameraWork.OnStartFollowing();
+            Playermove();
+            //Jump();
+            Rotetion();
+            Bullet_();
+
+        }
+
     }
     #region
     //private void Ontriggerenter(Collider other)
@@ -154,35 +168,21 @@ public class player : MonoBehaviour
     void Playermove()
     {
 
-        
-        if (Input.GetKey(KeyCode.W))
-        {
-            //z方向に進む
-           rd.MovePosition(transform.position + transform.forward * Time.deltaTime);
-        }
+        //Vertical:tate
+        //Horizontal:yoko
+        ws = Input.GetAxis("Vertical") * speed;
+        ad = Input.GetAxis("Horizontal") * speed;
+       
+        //ad = ad - ad - ad;
+        move_position_ = new Vector3(ws, 0, ad);
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            rd.MovePosition(transform.forward * -1f * MoveSpeed * Time.deltaTime);
-        }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            rd.MovePosition(transform.right * -1 * MoveSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            rd.MovePosition(transform.right * MoveSpeed * Time.deltaTime);
-        }
+        rd.velocity = move_position_;
+
     }
     void Jump()
     {
-       // if (cc.isGrounded)
-        //{
-           // if (Input.GetKey(KeyCode.Space))
-                //elocity.y = JumpPower;
-       // }
-
+       
     }
     void Bullet_()
     {
@@ -201,11 +201,17 @@ public class player : MonoBehaviour
                 //Debug.Log(float.IsNaN(Y));
                 //Destroy(bullet.gameObject, 4);
                 #endregion
+
                 GameObject bullets = Instantiate(bullet) as GameObject;// bulletを作成し、作成したものはbulletsとする
+
                 bullets.transform.position = muzzle.transform.position;// bulletsをプレイヤーの場所に移動させる
+                
                 bullet.transform.rotation = muzzle.transform.rotation;
+
                 force = this.gameObject.transform.forward * bulletSpeed;// forceに前方への力を代入する
+
                 bullets.GetComponent<Rigidbody>().AddForce(force);// bulletsにforceの分だけ力をかける
+
                 Destroy(bullets.gameObject, 4);//
                 bulletcount--;
             }
@@ -215,7 +221,7 @@ public class player : MonoBehaviour
     }
     void Rotetion()
     {
-        
+
 
         rotetionX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * Slidercontroller.now;
 
@@ -227,11 +233,11 @@ public class player : MonoBehaviour
         y_ = this.transform.position.y;
         z_ = this.transform.position.z;
 
-        verRot.transform.position = new Vector3(x_, y_+5,z_-5) ;
+        verRot.transform.position = new Vector3(x_, y_ + 5, z_ - 5);
 
         HorRot.transform.localEulerAngles = new Vector3(0, rotetionX, 0);
 
-       // cc.Move(Velocity * Time.deltaTime);
+        // cc.Move(Velocity * Time.deltaTime);
 
         Velocity.y += Physics.gravity.y * Time.deltaTime;
 
@@ -241,7 +247,7 @@ public class player : MonoBehaviour
     }
 
 
-    
+
 
 }
 
