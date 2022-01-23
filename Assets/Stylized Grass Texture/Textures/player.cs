@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-    // public float speed = 3.0f;
+    
+    float rotationX = 0f;
+    float rotationY = 0f;
 
-    //private CharacterController cc;
-    private Vector3 Velocity;
-    [SerializeField]
+    public float sensitivityX = 15F;
+    public float sensitivityY = 15F;
+
+  
+ 
     private float JumpPower = 8;//ジャンプ力
-    [SerializeField]
-    private float MoveSpeed = 10;//移動スピード
+    
 
     public float sensitivitymax = 200F;//マウスのXの動き
     public float sensitivitynow;//マウスのYの動き
@@ -24,7 +27,7 @@ public class player : MonoBehaviour
     float rotetionX = 0f;//　横軸の回転量
     float rotetionY = 0f;//  横軸
 
-    public GameObject verRot;//縦回転させるオブジェクト（カメラ）
+    public GameObject verRot_;//縦回転させるオブジェクト（カメラ）
     public GameObject HorRot;//横回転させるオブジェクト（プレイヤー）
     public GameObject muzzle;
 
@@ -60,7 +63,7 @@ public class player : MonoBehaviour
     public Vector3 move_position_;
 
     public Vector3 zyx;
-    // Start is called before the first frame update
+    
     #endregion
 
     private CameraWork cameraWork;
@@ -71,11 +74,12 @@ public class player : MonoBehaviour
 
         HorRot = this.gameObject;
         bullet = GameObject.FindGameObjectWithTag("Bullet");
-        verRot = GameObject.FindGameObjectWithTag("MainCamera_");
+        //GameObject child = transform.GetChild(0).gameObject;
         ammo_box2 = GameObject.FindGameObjectWithTag("ammo_box");
+        verRot_ = GameObject.FindGameObjectWithTag("MainCamera_");
         this.myPhtonView = GetComponent<PhotonView>();
 
-        //cc = GetComponent<CharacterController>();
+      
 
         cameraWork = GetComponent<CameraWork>();
 
@@ -87,28 +91,12 @@ public class player : MonoBehaviour
         {
             transform.position = new Vector3(122, 1, 3);
         }
-        if (Canvas_Manager.Spawn_number == 0)
-        {
-            #region
-            //    = Random.Range(-100, 100);
-            //    = 0;
-            //    = Random.Range(100, -100)
-            #endregion
 
 
 
-            //transform.position = new Vector3(Random.Range(-200, 200), 100, Random.Range(-100, 100));
-        }
-
-        #region
-
-        //this.myPhotonView = GetComponent<PhotonView>();
-
-        #endregion
+       
     }
-    #region
-    // Update is called once per frame
-    #endregion
+   
     void Update()
     {
 
@@ -116,37 +104,17 @@ public class player : MonoBehaviour
         if (this.myPhtonView.IsMine)
         {
 
-
-            //cameraWork.OnStartFollowing();
-            Playermove();
-            //Jump();
-            Rotetion();
-            Bullet_();
-
+            //===============================//
+            //cameraWork.OnStartFollowing(); //
+            Playermove();                    //
+            //Jump();                        //
+            Rotetion(); 　　　　　　　　　　　　 //
+            Bullet_();                       //
+            //===============================//
         }
 
     }
-    #region
-    //private void Ontriggerenter(Collider other)
-    //{
-    //    if (other.gameObject.tag == "ammo_box2")
-    //    {
-    //        bulletcount++;
-    //        Debug.Log(bulletcount);
-    //    }
-    //}
-    //private void OnControllerColliderHit(ControllerColliderHit hit)
-    //{
-    //    if (hit.gameObject.tag == "ammo_box2")
-    //    {
-    //        bulletcount++;
-    //        Debug.Log(bulletcount);
-
-    //    }
-
-
-    //}
-    #endregion
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -158,26 +126,23 @@ public class player : MonoBehaviour
         }
         #region
 
-        //if (other.gameObject.tag == "potion")
-        //{
-        //    Destroy(potion.gameObject);
-        //}
-
+       
         #endregion
     }
     void Playermove()
     {
-
-        //Vertical:tate
-        //Horizontal:yoko
-        ws = Input.GetAxis("Vertical") * speed;
+        //========================================//
+        //Vertical:縦                             //
+        //Horizontal:横                           //
+        //=======================================//
+        ws = Input.GetAxis("Vertical") * speed;  
         ad = Input.GetAxis("Horizontal") * speed;
-       
-        //ad = ad - ad - ad;
+      
         move_position_ = new Vector3(ws, 0, ad);
 
-
+        ad = ad - ad - ad;
         rd.velocity = move_position_;
+
 
     }
     void Jump()
@@ -190,17 +155,7 @@ public class player : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                #region
-                // GameObject bullets = Instantiate(bullet) as GameObject;
-                //bullets.transform.position = this.transform.position;
-                //Y = transform.position.y;
-                //Instantiate(bullet, new Vector3(transform.position.x, Y, transform.position.z), Quaternion.identity);
-                //bullet.transform.position = this.transform.position;
-                //force = this.gameObject.transform.forward * bulletSpeed;
-                //bullet.GetComponent<Rigidbody>().AddForce(force);
-                //Debug.Log(float.IsNaN(Y));
-                //Destroy(bullet.gameObject, 4);
-                #endregion
+                
 
                 GameObject bullets = Instantiate(bullet) as GameObject;// bulletを作成し、作成したものはbulletsとする
 
@@ -212,7 +167,7 @@ public class player : MonoBehaviour
 
                 bullets.GetComponent<Rigidbody>().AddForce(force);// bulletsにforceの分だけ力をかける
 
-                Destroy(bullets.gameObject, 4);//
+                Destroy(bullets.gameObject, 4);
                 bulletcount--;
             }
 
@@ -222,26 +177,14 @@ public class player : MonoBehaviour
     void Rotetion()
     {
 
+        rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
 
-        rotetionX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * Slidercontroller.now;
+        rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+        rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+        
+        verRot_.transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
+        HorRot.transform.localEulerAngles = new Vector3(0, rotationX, 0);
 
-        rotetionY += Input.GetAxis("Mouse Y") * Slidercontroller.now;
-
-        verRot.transform.localEulerAngles = new Vector3(-rotetionY, 0, 0);
-
-        x_ = this.transform.position.x;
-        y_ = this.transform.position.y;
-        z_ = this.transform.position.z;
-
-        verRot.transform.position = new Vector3(x_, y_ + 5, z_ - 5);
-
-        HorRot.transform.localEulerAngles = new Vector3(0, rotetionX, 0);
-
-        // cc.Move(Velocity * Time.deltaTime);
-
-        Velocity.y += Physics.gravity.y * Time.deltaTime;
-
-        //Debug.Log(verRot.transform.position);
 
 
     }

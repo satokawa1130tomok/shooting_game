@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3981717236952751009}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera_
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +197,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 32
   m_CollisionDetection: 0
 --- !u!65 &4720078665192573018
 BoxCollider:
@@ -224,15 +224,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea685bd1c761445bb80acaa5d18205ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 8
-  MoveSpeed: 10
+  sensitivityX: 15
+  sensitivityY: 15
   sensitivitymax: 200
   sensitivitynow: 0
   minimumX: 300
   maximumX: 300
   minimumY: 300
   maximumY: 300
-  verRot: {fileID: 4720078665192573022}
+  verRot_: {fileID: 0}
   HorRot: {fileID: 3779515359210004517}
   muzzle: {fileID: 0}
   bullet: {fileID: 0}
