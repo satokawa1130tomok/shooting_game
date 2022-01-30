@@ -74,9 +74,9 @@ public class player : MonoBehaviour
 
         HorRot = this.gameObject;
         bullet = GameObject.FindGameObjectWithTag("Bullet");
-        //GameObject child = transform.GetChild(0).gameObject;
+        verRot_ = transform.GetChild(0).gameObject;
         ammo_box2 = GameObject.FindGameObjectWithTag("ammo_box");
-        verRot_ = GameObject.FindGameObjectWithTag("MainCamera_");
+        
         this.myPhtonView = GetComponent<PhotonView>();
 
       
@@ -96,7 +96,9 @@ public class player : MonoBehaviour
 
        
     }
-   
+
+    
+
     void Update()
     {
 
@@ -135,15 +137,27 @@ public class player : MonoBehaviour
         //Vertical:縦                             //
         //Horizontal:横                           //
         //=======================================//
-        ws = Input.GetAxis("Vertical") * speed;  
+        ws = Input.GetAxis("Vertical") * speed;
         ad = Input.GetAxis("Horizontal") * speed;
       
-        move_position_ = new Vector3(ws, 0, ad);
+        move_position_ = new Vector3(ad, 0, 0);
+       
 
-        ad = ad - ad - ad;
-        rd.velocity = move_position_;
+        if(ws!=0)
+        {
+            move_position_ = transform.forward * ws;
 
+        　　rd.velocity = move_position_;
 
+        }
+
+        if (ad != 0)
+        {
+            move_position_ = transform.right * ad;
+
+            rd.velocity = move_position_;
+
+        }
     }
     void Jump()
     {
@@ -176,15 +190,22 @@ public class player : MonoBehaviour
     }
     void Rotetion()
     {
-
+        //============================================================
+        //rotetionx　=　X方向の回転
+        //transform.localEulerAngles.y = y軸の回転
+        //Input.GetAxis("Mouse X")　= マウスの横の移動量
+        //X方向の回転 = y軸の回転 + マウスの横の移動量 * 15
         rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
 
+        //Y方向の回転　＋＝　マウスの移動量　*  15
         rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-        rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+
+        //
+        rotationY = Mathf.Clamp(rotationY, 100000, 1000000);
         
         verRot_.transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
         HorRot.transform.localEulerAngles = new Vector3(0, rotationX, 0);
-
+        //============================================================
 
 
     }

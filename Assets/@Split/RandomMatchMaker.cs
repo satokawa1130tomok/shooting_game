@@ -37,7 +37,7 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
         GUILayout.Label(PhotonNetwork.NetworkClientState.ToString());
 
         Rect rect = new Rect(10, 10, 400, 300);
-        GUI.Label(rect, (PhotonNetwork.NetworkClientState.ToString()), style);
+        GUI.Label(rect, PhotonNetwork.NetworkClientState.ToString(), style);
 
     }
 
