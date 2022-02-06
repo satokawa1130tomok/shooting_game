@@ -66,31 +66,41 @@ public class player : MonoBehaviour
     
     #endregion
 
+    
+
     private CameraWork cameraWork;
     void Start()
     {
+       
+        verRot_ = transform.GetChild(0).gameObject;
         rd = GetComponent<Rigidbody>();
 
 
         HorRot = this.gameObject;
         bullet = GameObject.FindGameObjectWithTag("Bullet");
-        verRot_ = transform.GetChild(0).gameObject;
+        //0番目のgameobjectをverrotに入れる
+        
+
         ammo_box2 = GameObject.FindGameObjectWithTag("ammo_box");
         
         this.myPhtonView = GetComponent<PhotonView>();
+        //verRot_.SetActive(false);
 
-      
-
-        cameraWork = GetComponent<CameraWork>();
-
-        if (Canvas_Manager.Spawn_number == 1)
+       if(!myPhtonView.IsMine)
         {
-            transform.position = new Vector3(0, 1, 0);
+            verRot_.SetActive(false);
         }
-        if (Canvas_Manager.Spawn_number == 2)
-        {
-            transform.position = new Vector3(122, 1, 3);
-        }
+
+        
+
+        //if (Canvas_Manager.Spawn_number == 1)
+        //{
+        //    transform.position = new Vector3(0, 1, 0);
+        //}
+        //if (Canvas_Manager.Spawn_number == 2)
+        //{
+        //    transform.position = new Vector3(122, 1, 3);
+        //}
 
 
 
@@ -103,9 +113,9 @@ public class player : MonoBehaviour
     {
 
 
-        if (this.myPhtonView.IsMine)
-        {
-
+        if(this.myPhtonView.IsMine)
+        { 
+            verRot_.SetActive(true);
             //===============================//
             //cameraWork.OnStartFollowing(); //
             Playermove();                    //
@@ -114,6 +124,8 @@ public class player : MonoBehaviour
             Bullet_();                       //
             //===============================//
         }
+
+       
 
     }
     
@@ -190,6 +202,10 @@ public class player : MonoBehaviour
     }
     void Rotetion()
     {
+
+
+
+
         //============================================================
         //rotetionx　=　X方向の回転
         //transform.localEulerAngles.y = y軸の回転
@@ -211,7 +227,7 @@ public class player : MonoBehaviour
     }
 
 
-
+    
 
 }
 
