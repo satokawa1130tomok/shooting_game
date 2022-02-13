@@ -18,6 +18,8 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
 
     private GUIStyle style;
 
+    private Vector3 spawn_Position;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,39 +43,46 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
 
     }
 
-    public override void OnJoinedLobby()
-    {
+    //public override void OnJoinedLobby()
+    //{
 
-        Debug.Log("ルームに接続中…");
-        PhotonNetwork.JoinRandomRoom();
-    }
+    //    Debug.Log("ルームに接続中…");
+    //    PhotonNetwork.JoinRandomRoom();
+    //}
     //マスターサーバーに接続したら
     public override void OnConnectedToMaster()
     {
+        if(Canvas_Manager.Spawn_number == 5)
+        {
+            spawn_Position = new Vector3  (0, 1, 0);
+        }
+
+        if (Canvas_Manager.Spawn_number == 6)
+        {
+            spawn_Position = new Vector3 (100, 1, 100);
+        }
         
-        Debug.Log("ルーム作成中…");
-        // "room"という名前のルームに参加する（ルームが無ければ作成してから参加する）
-        PhotonNetwork.JoinOrCreateRoom("room", new RoomOptions(), TypedLobby.Default);
+        
     }
 
     //roomに接続した時
     public override void OnJoinedRoom()
     {
-        
+
         //PhotonNetwork.IsMessageQueueRunning = false;
 
         // シーンをバックグラウンドで非同期にロード SceneManager.LoadSceneAsync("PlayScene", LoadSceneMode.Single);
-        Debug.Log("Joined");
+        //Debug.Log("Joined");
         //キャラクターを生成
         //GameObject monster = PhotonNetwork.Instantiate("Tank", Vector3.zero, Quaternion.identity, 0);
 
         //SceneManager.LoadScene("PlayScene");
-
         
+
 
         //----------------------------------------------------------------------------------------------------------
         //            ↓クローンを作る　生成する名前　スポーン場所　　　回転していない　　　　　０
-         PhotonNetwork.Instantiate("player_", new Vector3(0,1,0), Quaternion.identity, 0);
+        //PhotonNetwork.Instantiate("player", new Vector3(0,1,0), Quaternion.identity, 0);
         //----------------------------------------------------------------------------------------------------------
         //camera_.transform.parent = avatar.transform;
         //camera_.transform.position = avatar.transform.position;

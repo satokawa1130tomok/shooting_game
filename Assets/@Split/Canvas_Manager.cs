@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class Canvas_Manager : MonoBehaviour
 {
@@ -47,6 +49,9 @@ public class Canvas_Manager : MonoBehaviour
                 setting_Canvas.gameObject.SetActive(true);
                 break;
             case 4:
+                Debug.Log("ルーム作成中…");
+                // "room"という名前のルームに参加する（ルームが無ければ作成してから参加する）
+                PhotonNetwork.JoinOrCreateRoom("room", new RoomOptions(), TypedLobby.Default);
                 SceneManager.LoadScene("PlayScene");
                 break;
             case 5:
