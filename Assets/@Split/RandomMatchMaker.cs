@@ -10,6 +10,11 @@ using UnityEngine.SceneManagement;
 public class RandomMatchMaker : MonoBehaviourPunCallbacks
 {
 
+
+    public float random_X;
+    public float random_y;
+    public float random_Z;
+
     Vector3 spawnPosition = new Vector3(0, 1, 0);
 
     public GameObject avatar;
@@ -28,7 +33,9 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
 
         style = new GUIStyle();
         style.fontSize = 30;
+
     }
+
 
     // Update is called once per frame
     void OnGUI()
@@ -43,58 +50,74 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
 
     }
 
-    //public override void OnJoinedLobby()
-    //{
 
-    //    Debug.Log("ルームに接続中…");
-    //    PhotonNetwork.JoinRandomRoom();
-    //}
-    //マスターサーバーに接続したら
     public override void OnConnectedToMaster()
     {
-        if(Canvas_Manager.Spawn_number == 5)
-        {
-            spawn_Position = new Vector3  (0, 1, 0);
-        }
 
-        if (Canvas_Manager.Spawn_number == 6)
-        {
-            spawn_Position = new Vector3 (100, 1, 100);
-        }
-        
-        
+        PhotonNetwork.NetworkingClient.OpJoinRandomOrCreateRoom(null, null);
+
     }
+
 
     //roomに接続した時
     public override void OnJoinedRoom()
     {
 
-        //PhotonNetwork.IsMessageQueueRunning = false;
+        Debug.Log("マスターサーバー" + Canvas_Manager.Spawn_number); ;
 
-        // シーンをバックグラウンドで非同期にロード SceneManager.LoadSceneAsync("PlayScene", LoadSceneMode.Single);
-        //Debug.Log("Joined");
-        //キャラクターを生成
-        //GameObject monster = PhotonNetwork.Instantiate("Tank", Vector3.zero, Quaternion.identity, 0);
+        if (Canvas_Manager.Spawn_number == 1)
+        {
+            spawn_Position = new Vector3(0, 1, 0);
+        }
 
-        //SceneManager.LoadScene("PlayScene");
-        
+        if (Canvas_Manager.Spawn_number == 2)
+        {
+            spawn_Position = new Vector3(100, 1, 100);
 
+        }
 
-        //----------------------------------------------------------------------------------------------------------
-        //            ↓クローンを作る　生成する名前　スポーン場所　　　回転していない　　　　　０
-        //PhotonNetwork.Instantiate("player", new Vector3(0,1,0), Quaternion.identity, 0);
-        //----------------------------------------------------------------------------------------------------------
-        //camera_.transform.parent = avatar.transform;
-        //camera_.transform.position = avatar.transform.position;
+        if (Canvas_Manager.Spawn_number == 0)
+        {
+            random_X = Random.Range(-100, 100);
+            random_y = Random.Range(1, 5);
+            random_Z = Random.Range(-100, 100);
+            spawn_Position = new Vector3(random_X, random_y, random_Z);
 
-        //SceneManager.LoadScene("test");
+        }
+
     }
 
     private string GetDebuggerDisplay()
     {
         return ToString();
     }
+
+    public void Onclick()
+    {
+
+
+        Debug.Log("ルーム" + Canvas_Manager.Spawn_number);
+        Debug.Log("start");
+        SceneManager.LoadScene("PlayScene");
+
+        IEnumerator Timer()
+        {
+            yield return new WaitForSeconds(10);
+        }
+        //----------------------------------------------------------------------------------------------------------
+        //            ↓クローンを作る　生成する名前　スポーン場所　　　回転していない　　　　　０
+        //PhotonNetwork.Instantiate("player", spawn_Position, Quaternion.identity, 0);
+        //----------------------------------------------------------------------------------------------------------
+
+
+        //Debug.Log("spawn"+spawn_Position);
+        //Debug.Log("this"+this.transform.position);
+        Debug.Log("stop");
+    }
+
+
 }
+
 
 
 
