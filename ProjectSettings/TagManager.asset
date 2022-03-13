@@ -14,6 +14,7 @@ TagManager:
   - slider
   - text
   - MainCamera_
+  - pl
   layers:
   - Default
   - TransparentFX
