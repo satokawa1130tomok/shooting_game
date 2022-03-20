@@ -71,7 +71,9 @@ public class player : MonoBehaviour
     private CameraWork cameraWork;
     void Start()
     {
-       
+        PhotonNetwork.Instantiate("player_UI", this.transform.position, Quaternion.identity,0);
+
+
         verRot_ = transform.GetChild(0).gameObject;
         rd = GetComponent<Rigidbody>();
 

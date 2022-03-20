@@ -15,6 +15,7 @@ TagManager:
   - text
   - MainCamera_
   - pl
+  - player_UI
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,9 @@ public class text : MonoBehaviour
     void Start()
     {
         myRectTfm = GetComponent<RectTransform>();
+
+
+        Debug.Log("text "+"aaaa");
         
     }
 
