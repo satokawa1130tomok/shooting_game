@@ -50,7 +50,7 @@ public class player_UI : MonoBehaviour
 
     }
     
-    public void SetTarget(player.cs taeget)
+    public void SetTarget(PlayerManager taeget)
     {
 
         if (taeget == null)
