@@ -8,7 +8,7 @@ using Photon.Realtime;
 
 
 
-public class PlayerManager : MonoBehaviourPunCallbacks
+public class PlayerManager : MonoBehaviourPunCallbacks,IPunObservable
 {
     //頭上のUIのPrefab
     public GameObject PlayerUiPrefab;
@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
-            PlayerManager.LocalPlayerInstance = this.gameObject;
+            LocalPlayerInstance = this.gameObject;
         }
     }
     #endregion
