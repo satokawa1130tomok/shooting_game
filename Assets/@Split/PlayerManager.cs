@@ -4,9 +4,11 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System;
 using Photon.Pun;
+using Photon.Realtime;
 
 
-public class PlayerManager : MonoBehaviour
+
+public class PlayerManager : MonoBehaviourPunCallbacks
 {
     //頭上のUIのPrefab
     public GameObject PlayerUiPrefab;
@@ -23,7 +25,7 @@ public class PlayerManager : MonoBehaviour
     #region プレイヤー初期設定
     void Awake()
     {
-        if (PhotonView.isMine)
+        if (photonView.IsMine)
         {
             PlayerManager.LocalPlayerInstance = this.gameObject;
         }
@@ -48,7 +50,7 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        if (!photonView.isMine) //このオブジェクトがLocalでなければ実行しない
+        if (!photonView.IsMine) //このオブジェクトがLocalでなければ実行しない
         {
             return;
         }
@@ -60,7 +62,7 @@ public class PlayerManager : MonoBehaviour
     //プレイヤーのHP,チャットを同期
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.isWriting)
+        if (stream.IsWriting)
         {
             stream.SendNext(this.HP);
             //stream.SendNext(this.ChatText);

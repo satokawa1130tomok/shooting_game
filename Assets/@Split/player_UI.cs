@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 using Photon.Pun;
 using UnityEngine.UI;
 
@@ -9,15 +8,15 @@ public class player_UI : MonoBehaviour
 {
     public Vector3 ScreenOffset = new Vector3(0f, 30f, 0f);
     public Text playerNameText;
-    player _target;
-    //float _characterControllerHeight;
+   //float _characterControllerHeight;
     Transform _targetTransform;
     Vector3 _targetPosition;
+    PlayerManager _target;
 
     private void Awake()
     {
         //スライダーをキャンバスの位置にする
-        this.GetComponent<Transform>().SetParent(GameObject.Find("Canvas").GetComponent<Transform>());
+        this.GetComponent<Transform>().SetParent(GameObject.Find("Canvas (Environment)").GetComponent<Transform>());
     }
 
 
@@ -66,7 +65,7 @@ public class player_UI : MonoBehaviour
 
         if (playerNameText != null)
         {
-            playerNameText.text = _target.photonView.owner.NickName;
+            playerNameText.text = _target.photonView.Owner.NickName;
         }
     }
 }
