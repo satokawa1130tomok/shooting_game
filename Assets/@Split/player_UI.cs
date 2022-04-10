@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class player_UI : MonoBehaviour
 {
-    public Vector3 ScreenOffset = new Vector3(0f, 30f, 0f);
+    public Vector3 ScreenOffset = new Vector3(0f, 60f, 0f);
     public Text playerNameText;
    //float _characterControllerHeight;
     Transform _targetTransform;
@@ -16,24 +16,24 @@ public class player_UI : MonoBehaviour
     private void Awake()
     {
         //スライダーをキャンバスの位置にする
-        this.GetComponent<Transform>().SetParent(GameObject.Find("Canvas (Environment)").GetComponent<Transform>());
+        this.GetComponent<Transform>().SetParent(GameObject.Find("Canvas").GetComponent<Transform>());
     }
 
 
 
     void Update()
     {
+        Debug.Log("aa");
         //playerがいなくなったら
         if (_target == null)
         {
             //スライダーを削除
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
             return;
+
+
         }
-    }
-    
-    private void LateUpdate()
-    {
+
         //playerがいたら
         if (_targetTransform != null)
         {
@@ -41,13 +41,21 @@ public class player_UI : MonoBehaviour
             _targetPosition = _targetTransform.position;
             // プレイヤーの座標をワールド座標からスクリーン座標に変換してスライダーの座標に入れる
             this.transform.position = Camera.main.WorldToScreenPoint(_targetPosition) + ScreenOffset;
-
-
+            Debug.Log("a");
+            
+            
         }
-
-
-
+        Debug.Log("aaa");
+        
     }
+    
+    //private void LateUpdate()
+    //{
+       
+
+    //    Debug.Log("pu");
+
+    //}
     
     public void SetTarget(PlayerManager taeget)
     {
