@@ -23,7 +23,6 @@ public class player_UI : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("aa");
         //playerがいなくなったら
         if (_target == null)
         {
@@ -46,6 +45,7 @@ public class player_UI : MonoBehaviour
             
         }
         Debug.Log("aaa");
+
         
     }
     
@@ -76,4 +76,5 @@ public class player_UI : MonoBehaviour
             playerNameText.text = _target.photonView.Owner.NickName;
         }
     }
+   
 }

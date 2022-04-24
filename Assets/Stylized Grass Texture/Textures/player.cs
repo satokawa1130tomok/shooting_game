@@ -63,14 +63,19 @@ public class player : MonoBehaviour
     public Vector3 move_position_;
 
     public Vector3 zyx;
-    
+
+    //Renderer targetRenderer;
+
     #endregion
 
-    
+
 
     private CameraWork cameraWork;
     void Start()
     {
+        /////////////
+        //targetRenderer = GetComponent<Renderer>();
+
         //PhotonNetwork.Instantiate("player_UI", this.transform.position, Quaternion.identity,0);
 
 
@@ -113,9 +118,17 @@ public class player : MonoBehaviour
 
     void Update()
     {
+        //if (targetRenderer.isVisible)
+        //{
+        //    Debug.Log("t");
+        //}
+        //else
+        //{
+        //    Debug.Log("f");
+        //}
 
 
-        if(this.myPhtonView.IsMine)
+        if (this.myPhtonView.IsMine)
         { 
             verRot_.SetActive(true);
             //===============================//
