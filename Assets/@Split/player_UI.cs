@@ -13,6 +13,14 @@ public class player_UI : MonoBehaviour
     Vector3 _targetPosition;
     PlayerManager _target;
 
+    private void Start()
+    {
+        if (playerNameText != null)
+        {
+            playerNameText.text = _target.photonView.Owner.NickName;
+        }
+    }
+
     private void Awake()
     {
         //スライダーをキャンバスの位置にする
@@ -23,6 +31,7 @@ public class player_UI : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(_target.photonView.Owner.NickName);
         //playerがいなくなったら
         if (_target == null)
         {
@@ -59,6 +68,7 @@ public class player_UI : MonoBehaviour
     
     public void SetTarget(PlayerManager taeget)
     {
+        Debug.Log("UI_set");
 
         if (taeget == null)
         {
@@ -75,6 +85,7 @@ public class player_UI : MonoBehaviour
         {
             playerNameText.text = _target.photonView.Owner.NickName;
         }
+      
     }
    
 }

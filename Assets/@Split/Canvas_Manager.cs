@@ -12,6 +12,7 @@ public class Canvas_Manager : MonoBehaviourPunCallbacks
     public Canvas Map_canvas;
     public Canvas setting_Canvas;
     public Canvas Start_Canvas;
+    public Canvas Name_Canvas;
     public static int Spawn_number;
     public GameObject  Button1;
     public GameObject Button2;
@@ -25,9 +26,10 @@ public class Canvas_Manager : MonoBehaviourPunCallbacks
         Button1.GetComponent<Image>().color = Color.white;
         Button2.GetComponent<Image>().color = Color.white;
         Button3.GetComponent<Image>().color = Color.white;
-        Start_Canvas.gameObject.SetActive(true);
+        Start_Canvas.gameObject.SetActive(false);
         setting_Canvas.gameObject.SetActive(false);
         Map_canvas.gameObject.SetActive(false);
+        Name_Canvas.gameObject.SetActive(true);
     }
     public void Onclick(int number)
     {
@@ -74,6 +76,11 @@ public class Canvas_Manager : MonoBehaviourPunCallbacks
                 Button2.GetComponent<Image>().color = Color.white;
                 Button3.GetComponent<Image>().color = Color.blue;
                 break;
+            case 8:
+                Name_Canvas.gameObject.SetActive(false);
+                Start_Canvas.gameObject.SetActive(true);
+                break;
+           
 
 
 

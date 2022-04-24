@@ -29,6 +29,7 @@ public class NameInputFieldScript : MonoBehaviour
         PlayerPrefs.SetString(playerNamePrefKey, value);
 
         Debug.Log(PhotonNetwork.NickName);
+
     }
     
 
