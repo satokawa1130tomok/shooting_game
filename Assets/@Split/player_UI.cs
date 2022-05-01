@@ -11,22 +11,22 @@ public class player_UI : MonoBehaviour
    //float _characterControllerHeight;
     Transform _targetTransform;
     Vector3 _targetPosition;
-    PlayerManager _target;
+     PlayerManager _target;
+   
 
-    private void Start()
-    {
-        if (playerNameText != null)
-        {
-            playerNameText.text = _target.photonView.Owner.NickName;
-        }
-    }
+
 
     private void Awake()
     {
         //スライダーをキャンバスの位置にする
-        this.GetComponent<Transform>().SetParent(GameObject.Find("Canvas").GetComponent<Transform>());
+        //this.GetComponent<Transform>().SetParent(GameObject.Find("Canvas").GetComponent<Transform>());
+        _target = transform.root.gameObject.GetComponent<PlayerManager>();
+       
     }
-
+    private void Start()
+    {
+        playerNameText.text = _target.photonView.Owner.NickName;
+    }
 
 
     void Update()
@@ -81,10 +81,7 @@ public class player_UI : MonoBehaviour
         //CharacterController _characterController = _target.GetComponent<CharacterController>();
 
 
-        if (playerNameText != null)
-        {
-            playerNameText.text = _target.photonView.Owner.NickName;
-        }
+        
       
     }
    

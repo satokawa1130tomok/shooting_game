@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks,IPunObservable
     {
         if (photonView.IsMine)
         {
-            PlayerManager.LocalPlayerInstance = this.gameObject;
+            LocalPlayerInstance = this.gameObject;
         }
     }
     #endregion
