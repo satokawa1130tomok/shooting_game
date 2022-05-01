@@ -7,7 +7,6 @@ using Photon.Pun;
 using Photon.Realtime;
 
 
-
 public class PlayerManager : MonoBehaviourPunCallbacks,IPunObservable
 {
     //頭上のUIのPrefab
@@ -56,6 +55,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks,IPunObservable
         }
         //LocalVariablesを参照し、現在のHPを更新
         HP = LocalVariables.currentHP;
+
+
     }
 
     #region OnPhotonSerializeView同期

@@ -17,22 +17,22 @@ public class clone_manager : MonoBehaviour
     // Update is called once per frame
     void　Start　()
     {
-        if(Canvas_Manager.Spawn_number == 1)
+        if(Button_color.Spawn_number == 1)
         {
             clone_position = new Vector3(0, 1, 0);
         }
-        if(Canvas_Manager.Spawn_number==2)
+        if(Button_color.Spawn_number==2)
         {
             clone_position = new Vector3(100, 1, 100);
         }
-        if(Canvas_Manager.Spawn_number==0)
+        if(Button_color.Spawn_number==0)
         {
             XXX = Random.Range(100, -100);
             YYY = Random.Range(1, 100);
             ZZZ = Random.Range(100, -100);
             clone_position = new Vector3(XXX, YYY, ZZZ);
         }
-        Debug.Log("nb" + Canvas_Manager.Spawn_number);
+        Debug.Log("nb" + Button_color.Spawn_number);
         Debug.Log("cp" + clone_position);
 
 

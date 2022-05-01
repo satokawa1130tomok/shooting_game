@@ -4,6 +4,8 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 //using 
 
 [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
@@ -24,6 +26,9 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
     private GUIStyle style;
 
     private Vector3 spawn_Position;
+    public bool room;
+    public GameObject start_button;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +38,7 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
 
         style = new GUIStyle();
         style.fontSize = 30;
+        room = false;
 
     }
 
@@ -58,25 +64,35 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
 
     }
 
-
+    public void Update()
+    {
+        if(room == true)
+        {
+            start_button.gameObject.SetActive(true);
+        }
+        if (room == false)
+        {
+            start_button.gameObject.SetActive(false);
+        }
+    }
     //roomに接続した時
     public override void OnJoinedRoom()
     {
 
-        Debug.Log("マスターサーバー" + Canvas_Manager.Spawn_number); ;
+        Debug.Log("マスターサーバー" + Button_color.Spawn_number); ;
 
-        if (Canvas_Manager.Spawn_number == 1)
+        if (Button_color.Spawn_number == 1)
         {
             spawn_Position = new Vector3(0, 1, 0);
         }
 
-        if (Canvas_Manager.Spawn_number == 2)
+        if (Button_color.Spawn_number == 2)
         {
             spawn_Position = new Vector3(100, 1, 100);
 
         }
 
-        if (Canvas_Manager.Spawn_number == 0)
+        if (Button_color.Spawn_number == 0)
         {
             random_X = Random.Range(-100, 100);
             random_y = Random.Range(1, 5);
@@ -84,6 +100,8 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
             spawn_Position = new Vector3(random_X, random_y, random_Z);
 
         }
+
+        room = true;
 
     }
 
@@ -96,7 +114,7 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
     {
 
 
-        Debug.Log("ルーム" + Canvas_Manager.Spawn_number);
+        Debug.Log("ルーム" + Button_color.Spawn_number);
         Debug.Log("start");
         SceneManager.LoadScene("PlayScene");
 
