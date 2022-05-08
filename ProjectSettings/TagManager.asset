@@ -16,6 +16,7 @@ TagManager:
   - MainCamera_
   - pl
   - player_UI
+  - Bullet2_
   layers:
   - Default
   - TransparentFX

@@ -13,7 +13,7 @@ public class Canvas_Manager : MonoBehaviourPunCallbacks
     public Canvas setting_Canvas;
     public Canvas Start_Canvas;
     public Canvas Name_Canvas;
-    
+    public GameObject st_button;
 
 
 
@@ -24,13 +24,14 @@ public class Canvas_Manager : MonoBehaviourPunCallbacks
         setting_Canvas.gameObject.SetActive(false);
         Map_canvas.gameObject.SetActive(false);
         Name_Canvas.gameObject.SetActive(false);
+        
     }
     public void Onclick(int number)
     {
         switch (number)
         {
             case 1:
-                Start_Canvas.gameObject.SetActive(true);
+                Start_Canvas.gameObject.SetActive(false);
                 Name_Canvas.gameObject.SetActive(true);
               
                 break;
@@ -51,7 +52,7 @@ public class Canvas_Manager : MonoBehaviourPunCallbacks
                 Name_Canvas.gameObject.SetActive(true);
                 break;
 
-          
+
 
                 
                    

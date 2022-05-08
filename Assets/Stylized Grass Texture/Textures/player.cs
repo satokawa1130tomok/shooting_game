@@ -1,19 +1,19 @@
 ﻿using Photon.Pun;
 using UnityEngine;
+using Photon.Realtime;
 
-public class player : MonoBehaviour
+public class player : MonoBehaviourPunCallbacks
 {
-    
     float rotationX = 0f;
     float rotationY = 0f;
 
     public float sensitivityX = 15F;
     public float sensitivityY = 15F;
 
-  
- 
+
+
     private float JumpPower = 8;//ジャンプ力
-    
+
 
     public float sensitivitymax = 200F;//マウスのXの動き
     public float sensitivitynow;//マウスのYの動き
@@ -29,7 +29,7 @@ public class player : MonoBehaviour
 
     public GameObject verRot_;//縦回転させるオブジェクト（カメラ）
     public GameObject HorRot;//横回転させるオブジェクト（プレイヤー）
-    public GameObject muzzle;
+    public Transform muzzle;
 
     public GameObject bullet;//発射する弾
 
@@ -84,21 +84,22 @@ public class player : MonoBehaviour
 
 
         HorRot = this.gameObject;
-        bullet = GameObject.FindGameObjectWithTag("Bullet");
+        bullet = GameObject.FindGameObjectWithTag("Bullet2_");
         //0番目のgameobjectをverrotに入れる
-        
+        muzzle = this.gameObject.transform.GetChild(1);
+
 
         ammo_box2 = GameObject.FindGameObjectWithTag("ammo_box");
-        
+
         this.myPhtonView = GetComponent<PhotonView>();
         //verRot_.SetActive(false);
 
-       if(!myPhtonView.IsMine)
+        if (!myPhtonView.IsMine)
         {
             verRot_.SetActive(false);
         }
 
-        
+
 
         //if (Canvas_Manager.Spawn_number == 1)
         //{
@@ -111,25 +112,15 @@ public class player : MonoBehaviour
 
 
 
-       
     }
 
-    
+
 
     void Update()
     {
-        //if (targetRenderer.isVisible)
-        //{
-        //    Debug.Log("t");
-        //}
-        //else
-        //{
-        //    Debug.Log("f");
-        //}
-
 
         if (this.myPhtonView.IsMine)
-        { 
+        {
             verRot_.SetActive(true);
             //===============================//
             //cameraWork.OnStartFollowing(); //
@@ -140,10 +131,10 @@ public class player : MonoBehaviour
             //===============================//
         }
 
-       
+
 
     }
-    
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -155,7 +146,7 @@ public class player : MonoBehaviour
         }
         #region
 
-       
+
         #endregion
     }
     void Playermove()
@@ -166,15 +157,15 @@ public class player : MonoBehaviour
         //=======================================//
         ws = Input.GetAxis("Vertical") * speed;
         ad = Input.GetAxis("Horizontal") * speed;
-      
-        move_position_ = new Vector3(ad, 0, 0);
-       
 
-        if(ws!=0)
+        move_position_ = new Vector3(ad, 0, 0);
+
+
+        if (ws != 0)
         {
             move_position_ = transform.forward * ws;
 
-        　　rd.velocity = move_position_;
+            rd.velocity = move_position_;
 
         }
 
@@ -188,33 +179,39 @@ public class player : MonoBehaviour
     }
     void Jump()
     {
-       
+
     }
     void Bullet_()
     {
-        if (bulletcount > 0)
+
+        if (Input.GetKey(KeyCode.E) && bulletcount > 0)
         {
-            if (Input.GetKey(KeyCode.E))
-            {
-                
 
-                GameObject bullets = Instantiate(bullet) as GameObject;// bulletを作成し、作成したものはbulletsとする
+            photonView.RPC("Shot", RpcTarget.All, muzzle.transform.position);
 
-                bullets.transform.position = muzzle.transform.position;// bulletsをプレイヤーの場所に移動させる
-                
-                bullet.transform.rotation = muzzle.transform.rotation;
+        } 
 
-                force = this.gameObject.transform.forward * bulletSpeed;// forceに前方への力を代入する
-
-                bullets.GetComponent<Rigidbody>().AddForce(force);// bulletsにforceの分だけ力をかける
-
-                Destroy(bullets.gameObject, 4);
-                bulletcount--;
-            }
-
-
-        }
     }
+
+    [PunRPC]
+    private void Shot(Vector3 position)
+    {
+
+        GameObject bullets = Instantiate(bullet) as GameObject;// bulletを作成し、作成したものはbulletsとする
+
+        bullets.transform.position = position;// bulletsをプレイヤーの場所に移動させる
+
+        bullet.transform.rotation = muzzle.transform.rotation;
+
+        force = this.gameObject.transform.forward * bulletSpeed;// forceに前方への力を代入する
+
+        bullets.GetComponent<Rigidbody>().AddForce(force);// bulletsにforceの分だけ力をかける
+
+        Destroy(bullets.gameObject, 4);
+        bulletcount--;
+
+    }
+
     void Rotetion()
     {
 
@@ -233,7 +230,7 @@ public class player : MonoBehaviour
 
         //
         rotationY = Mathf.Clamp(rotationY, 100000, 1000000);
-        
+
         verRot_.transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
         HorRot.transform.localEulerAngles = new Vector3(0, rotationX, 0);
         //============================================================
@@ -242,11 +239,6 @@ public class player : MonoBehaviour
     }
 
 
-    
+
 
 }
-
-
-
-
-

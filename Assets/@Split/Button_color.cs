@@ -12,6 +12,7 @@ public class Button_color : MonoBehaviour
     public GameObject Button1;
     public GameObject Button2;
     public GameObject Button3;
+    public GameObject random_text;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class Button_color : MonoBehaviour
         Button1.GetComponent<Image>().color = Color.white;
         Button2.GetComponent<Image>().color = Color.white;
         Button3.GetComponent<Image>().color = Color.white;
+       
     }
 
     public void Onclick(int number)
@@ -30,21 +32,24 @@ public class Button_color : MonoBehaviour
 
 
                 Spawn_number = 1;
-                Button1.GetComponent<Image>().color = Color.blue;
+                Button1.GetComponent<Image>().color = Color.gray;
                 Button2.GetComponent<Image>().color = Color.white;
                 Button3.GetComponent<Image>().color = Color.white;
+                
                 break;
             case 1:
                 Spawn_number = 2;
                 Button1.GetComponent<Image>().color = Color.white;
-                Button2.GetComponent<Image>().color = Color.blue;
+                Button2.GetComponent<Image>().color = Color.gray;
                 Button3.GetComponent<Image>().color = Color.white;
+                
                 break;
             case 2:
                 Spawn_number = 0;
                 Button1.GetComponent<Image>().color = Color.white;
                 Button2.GetComponent<Image>().color = Color.white;
-                Button3.GetComponent<Image>().color = Color.blue;
+                Button3.GetComponent<Image>().color = Color.gray;
+              
                 break;
         }
     }
