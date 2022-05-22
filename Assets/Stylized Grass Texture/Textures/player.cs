@@ -34,7 +34,7 @@ public class player : MonoBehaviourPunCallbacks
     public GameObject bullet;//発射する弾
 
     [SerializeField]
-    private float bulletSpeed = 5000;//玉のスピード
+    public float bulletSpeed = 5000;//玉のスピード
 
     private Vector3 force;//弾を飛ばす力
     private float Y;
@@ -84,7 +84,7 @@ public class player : MonoBehaviourPunCallbacks
 
 
         HorRot = this.gameObject;
-        bullet = GameObject.FindGameObjectWithTag("Bullet2_");
+        //bullet = GameObject.FindGameObjectWithTag("Bullet");
         //0番目のgameobjectをverrotに入れる
         muzzle = this.gameObject.transform.GetChild(1);
 

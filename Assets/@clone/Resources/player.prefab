@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 5811846470767991110}
   - component: {fileID: 9041164592160725038}
   - component: {fileID: 2416007854279365994}
+  - component: {fileID: 4380208934921182173}
   m_Layer: 0
   m_Name: player
   m_TagString: pl
@@ -194,9 +195,9 @@ MonoBehaviour:
   verRot_: {fileID: 0}
   HorRot: {fileID: 0}
   muzzle: {fileID: 0}
-  bullet: {fileID: 0}
+  bullet: {fileID: 457449266811141292, guid: e6f1346723bd247d8925ec9bad056196, type: 3}
   bulletSpeed: 5000
-  bulletcount: 0
+  bulletcount: 50
   ammo_box2: {fileID: 0}
   potion: {fileID: 0}
   position: {x: 0, y: 0, z: 0}
@@ -294,6 +295,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.026556207, y: 0.029394241, z: 0.057856824}
   m_Center: {x: 0.00004662387, y: 0.0060293456, z: 0.014787794}
+--- !u!114 &4380208934921182173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2346046994124015937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a750cc3a8738402188d3e5445fe3b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextFrame: {fileID: 0}
 --- !u!1 &2608947448745993045
 GameObject:
   m_ObjectHideFlags: 0

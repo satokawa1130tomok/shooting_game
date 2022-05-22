@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: -2205853460908849095}
   m_Layer: 0
   m_Name: Bullet2_
-  m_TagString: Bullet2_
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,9 +55,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457449266811141292}
-  m_LocalRotation: {x: -0.6064826, y: 0.3635641, z: -0.36356416, w: -0.6064825}
+  m_LocalRotation: {x: -0.63228977, y: 0.31655926, z: -0.31655928, w: -0.63228965}
   m_LocalPosition: {x: -6.7022233, y: -1.0756955, z: -9.678711}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 457449266811363470}
   - {fileID: 457449266811363466}
