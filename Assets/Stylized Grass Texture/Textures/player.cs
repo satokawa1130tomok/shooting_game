@@ -159,7 +159,7 @@ public class player : MonoBehaviourPunCallbacks
         ad = Input.GetAxis("Horizontal") * speed;
 
         move_position_ = new Vector3(ad, 0, 0);
-
+        Debug.Log("ws" + ws + "ad" + ad);
 
         if (ws != 0)
         {
