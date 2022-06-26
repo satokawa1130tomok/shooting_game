@@ -225,8 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bb5570951da044193b24c79d4c284f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ws: 0
-  ad: 0
+  Enemy_speed: 5
   speed: 10
   move_position_: {x: 0, y: 0, z: 0}
   rd: {fileID: 0}
+  target: {fileID: 0}

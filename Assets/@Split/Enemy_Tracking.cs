@@ -6,9 +6,8 @@ using Photon.Realtime;
 
 public class Enemy_Tracking : MonoBehaviour
 {
-     public float ws;
-    public float ad;
-    public float speed = 10f;
+    public float Enemy_speed = 10.0f;
+    public float speed = 1f;
     public Vector3 move_position_;
     public Rigidbody rd;
     public GameObject target;
@@ -20,24 +19,23 @@ public class Enemy_Tracking : MonoBehaviour
         target = GameObject.FindWithTag("pl");
     }
 
-    // Update is called once per frame
     void Update()
     {
 
         //“®‚­
-        move_position_ = new Vector3(ad, 0, 0);
-        Debug.Log("ws" + ws + "ad" + ad);
+        Debug.Log("ws" + Enemy_speed);
 
+        //‘O•û‚É‘¬“x‚ğ‚©‚¯‚Ä‚¢‚é
+        move_position_ = transform.forward * Enemy_speed;
 
-        move_position_ = transform.forward * ws;
-
+        //veloctiy‚Émove_position“ü‚ê‚é‚Æi‚Ş
         rd.velocity = move_position_;
-        //Œü‚«
 
+        //Œü‚«
         Vector3 vector3 = target.transform.position - this.transform.position;
         Quaternion quaternion = Quaternion.LookRotation(vector3);
         this.transform.rotation = quaternion;
-        
+
 
     }
 }

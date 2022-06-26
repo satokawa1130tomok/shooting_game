@@ -25,8 +25,8 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         InvokeRepeating("EnemyAttack", 1, 1);
         //target = GameObject.Find("Tank");
-        target = GameObject.FindWithTag("pl");
-        //generator = GameObject.Find("generator");
+        //target = gameobject.findwithtag("pl");
+        //generator = gameobject.find("generator");
         //gg = generator.GetComponent<game_generator>();
         EnemyHP = 5;
 
@@ -34,19 +34,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
  
-       Vector3 Apos = this.transform.position;
-       Vector3 Bpos = target.transform.position;
-        float dis = Vector3.Distance(Apos, Bpos);
-        distance = dis;
-        agent.destination = target.transform.position;
-        
-        
-        
-         target = GameObject.Find("Tank");
-        
-
-       
-
+      
         if (EnemyHP == 0)
         {
             gg.enemycount++;

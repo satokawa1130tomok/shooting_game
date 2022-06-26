@@ -52,7 +52,7 @@ public class player : MonoBehaviourPunCallbacks
     public Rigidbody rd;
 
 
-    public float speed = 10.0f;
+    public float speed = 15.0f;
 
 
     public float rotationSpeed = 10.0f;
