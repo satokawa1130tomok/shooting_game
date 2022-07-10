@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
+
 public class Enemy_Tracking : MonoBehaviourPunCallbacks
 {
     public float Enemy_speed = 10.0f;
@@ -11,24 +12,31 @@ public class Enemy_Tracking : MonoBehaviourPunCallbacks
     public Vector3 move_position_;
     public Rigidbody rd;
     public GameObject target;
+    PhotonView myPhtonView;
 
     // Start is called before the first frame update
     void Start()
     {
         rd = GetComponent<Rigidbody>();
+        this.myPhtonView = GetComponent<PhotonView>();
         target = GameObject.FindWithTag("pl");
     }
 
     void Update()
     {
 
-        photonView.RPC("move", RpcTarget.All);
+        if (this.myPhtonView.IsMine)
+        {
+            move();
+        }
         
+
+
 
     }
 
-    [PunRPC]
-    public void move()
+  
+  public void move()
     {
         //“®‚­
         Debug.Log("ws" + Enemy_speed);

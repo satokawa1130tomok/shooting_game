@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     private GameObject target;
-    NavMeshAgent agent;
+    //NavMeshAgent agent;
     public GameObject EnemyBullet;
     public GameObject generator;
     public game_generator gg;
@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+       // agent = GetComponent<NavMeshAgent>();
         InvokeRepeating("EnemyAttack", 1, 1);
         //target = GameObject.Find("Tank");
         //target = gameobject.findwithtag("pl");
@@ -42,12 +42,12 @@ public class Enemy : MonoBehaviour
         }
         if (distance < 120)
         {
-            agent.enabled = true;
+           // agent.enabled = true;
             
         }
         else
         {
-            agent.enabled = false;
+           // agent.enabled = false;
         }
 
     }

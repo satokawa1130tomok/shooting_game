@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a750cc3a8738402188d3e5445fe3b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextFrame: {fileID: 0}
+  TextFrame: {fileID: 3251262643676430649}
 --- !u!1 &2608947448745993045
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +396,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1545942707815186171
 MonoBehaviour:
   m_ObjectHideFlags: 0
