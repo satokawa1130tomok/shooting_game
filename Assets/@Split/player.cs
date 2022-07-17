@@ -73,6 +73,8 @@ public class player : MonoBehaviourPunCallbacks
     private CameraWork cameraWork;
     void Start()
     {
+
+        this.tag = "pl";
         /////////////
         //targetRenderer = GetComponent<Renderer>();
 

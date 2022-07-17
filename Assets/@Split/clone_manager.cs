@@ -38,11 +38,7 @@ public class clone_manager : MonoBehaviour
 
         PhotonNetwork.Instantiate("player", clone_position, Quaternion.identity, 0);
 
-        PhotonNetwork.Instantiate("Tank (1)", clone_position, Quaternion.identity, 0);
-        PhotonNetwork.Instantiate("Tank (1)", clone_position, Quaternion.identity, 0);
-        PhotonNetwork.Instantiate("Tank (1)", clone_position, Quaternion.identity, 0);
-
-
+       
 
     }
 

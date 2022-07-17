@@ -18,6 +18,7 @@ TagManager:
   - player_UI
   - Bullet2_
   - bulletcount
+  - pl2
   layers:
   - Default
   - TransparentFX

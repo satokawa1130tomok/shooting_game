@@ -13,23 +13,41 @@ public class Enemy_Tracking : MonoBehaviourPunCallbacks
     public Rigidbody rd;
     public GameObject target;
     PhotonView myPhtonView;
+    public float distance;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rd = GetComponent<Rigidbody>();
         this.myPhtonView = GetComponent<PhotonView>();
-        target = GameObject.FindWithTag("pl");
+        
+
     }
 
     void Update()
     {
+       Vector3 posA = target.transform.position;
+       Vector3 posB = this.transform.position;
+       distance = Vector3.Distance(posA, posB);
+        Debug.Log(posA + "_" + posB + "_" +  distance);
+        
 
         if (this.myPhtonView.IsMine)
         {
-            move();
-        }
+            
+            if(distance < 61)
+            {
+               move();
+            }
+            
+        } 
         
+        if(target == null)
+        {
+            target = GameObject.Find("player(Clone)");
+
+        }
 
 
 
