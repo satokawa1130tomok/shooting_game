@@ -1,7 +1,7 @@
 ﻿using Photon.Pun;
 using UnityEngine;
 using Photon.Realtime;
-
+using System.Collections;
 public class player : MonoBehaviourPunCallbacks
 {
     float rotationX = 0f;
@@ -126,10 +126,12 @@ public class player : MonoBehaviourPunCallbacks
             verRot_.SetActive(true);
             //===============================//
             //cameraWork.OnStartFollowing(); //
+
             Playermove();                    //
             //Jump();                        //
             Rotetion(); 　　　　　　　　　　　　 //
-            Bullet_();                       //
+            Bullet_();
+            StartCoroutine(Cameramove());
             //===============================//
         }
 
@@ -179,6 +181,9 @@ public class player : MonoBehaviourPunCallbacks
 
         }
     }
+
+    
+
     void Jump()
     {
 
@@ -240,7 +245,23 @@ public class player : MonoBehaviourPunCallbacks
 
     }
 
+    private IEnumerator Cameramove()
+    {
+        
+        Vector3 mousePos = Input.mousePosition;
+        yield return new WaitForSeconds(0.01f);
+        Vector3 mousePos2 = Input.mousePosition;
+        if(mousePos == mousePos2)
+        {
+           rd.constraints = RigidbodyConstraints.FreezeRotation;
+            //Debug.Log("ON");
 
+        }
+        if(mousePos == mousePos2!)
+        {
+           // Debug.Log("OFF");
+            rd.constraints = RigidbodyConstraints.None;
+        }
 
-
+    }
 }
