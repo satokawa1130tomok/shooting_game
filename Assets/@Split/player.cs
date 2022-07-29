@@ -2,6 +2,7 @@
 using UnityEngine;
 using Photon.Realtime;
 using System.Collections;
+using UnityEngine.UI;
 public class player : MonoBehaviourPunCallbacks
 {
     float rotationX = 0f;
@@ -39,11 +40,14 @@ public class player : MonoBehaviourPunCallbacks
     private Vector3 force;//弾を飛ばす力
     private float Y;
 
-    public int bulletcount;
+    public static int bulletcount;
     public GameObject ammo_box2;
     public GameObject potion;
     public Vector3 position;
     PhotonView myPhtonView;
+    public Text TextFrame_X;
+    public Text TextFrame_Y;
+    public Text TextFrame_Z;
     #region
 
     public float x_;
@@ -74,6 +78,7 @@ public class player : MonoBehaviourPunCallbacks
     void Start()
     {
 
+  
         this.tag = "pl";
         /////////////
         //targetRenderer = GetComponent<Renderer>();
@@ -134,9 +139,8 @@ public class player : MonoBehaviourPunCallbacks
             StartCoroutine(Cameramove());
             //===============================//
         }
-
-
-
+        float X = transform.position.x;
+        TextFrame_X.text = X.ToString("f0");
     }
 
 

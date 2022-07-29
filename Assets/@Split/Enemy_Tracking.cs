@@ -14,6 +14,7 @@ public class Enemy_Tracking : MonoBehaviourPunCallbacks
     public GameObject[] target;
     PhotonView myPhtonView;
     public float distance;
+    private GameObject confirm_target;
 
 
     // Start is called before the first frame update
@@ -29,17 +30,26 @@ public class Enemy_Tracking : MonoBehaviourPunCallbacks
     {
 
         target = GameObject.FindGameObjectsWithTag("pl");
+        confirm_target = target[0];
+
         for (int i = 0; i < target.Length; i++)
         {
+      
             Vector3 posA = target[i].transform.position;
             Vector3 posB = this.transform.position;
             distance = Vector3.Distance(posA, posB);
-            Vector3 vector3 = target[i].transform.position - this.transform.position;
-            Quaternion quaternion = Quaternion.LookRotation(vector3);
-            this.transform.rotation = quaternion;
-        }
 
-        // Debug.Log(posA + "_" + posB + "_" +  distance);
+            if (Vector3.Distance(confirm_target.transform.position,this.transform.position) < distance)
+            {
+                confirm_target = target[i];
+            }
+
+            
+        }
+           Vector3 vector3 = confirm_target.transform.position - this.transform.position;
+           Quaternion quaternion = Quaternion.LookRotation(vector3);
+           this.transform.rotation = quaternion;
+           // Debug.Log(posA + "_" + posB + "_" +  distance);
 
 
         if (this.myPhtonView.IsMine)

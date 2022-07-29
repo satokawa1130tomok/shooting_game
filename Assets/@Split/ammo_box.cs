@@ -9,6 +9,7 @@ public class ammo_box : MonoBehaviour
     private float y;
     private float z;
     float ammoboxtime;
+    private int ammobox_count;
 
 
      
@@ -17,6 +18,7 @@ public class ammo_box : MonoBehaviour
     {
         Generate();
         InvokeRepeating("Gemerate", 1, 1);
+        ammobox_count = 0;
     }
 
     private void Update()
@@ -28,7 +30,7 @@ public class ammo_box : MonoBehaviour
             ammoboxtime = 0f;
 
         }
-        
+     
     }
 
 
@@ -39,6 +41,8 @@ public class ammo_box : MonoBehaviour
         z = Random.Range(100, -100);
 
         Instantiate(ammobox, new Vector3(x, y, z), Quaternion.identity);
+        ammobox_count++;
+        
 
     }
 }
