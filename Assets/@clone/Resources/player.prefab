@@ -206,9 +206,6 @@ MonoBehaviour:
   ammo_box2: {fileID: 0}
   potion: {fileID: 0}
   position: {x: 0, y: 0, z: 0}
-  TextFrame_X: {fileID: 0}
-  TextFrame_Y: {fileID: 0}
-  TextFrame_Z: {fileID: 0}
   x_: 0
   y_: 0
   z_: 0

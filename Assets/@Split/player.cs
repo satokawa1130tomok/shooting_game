@@ -3,6 +3,7 @@ using UnityEngine;
 using Photon.Realtime;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class player : MonoBehaviourPunCallbacks
 {
     float rotationX = 0f;
@@ -45,9 +46,7 @@ public class player : MonoBehaviourPunCallbacks
     public GameObject potion;
     public Vector3 position;
     PhotonView myPhtonView;
-    public Text TextFrame_X;
-    public Text TextFrame_Y;
-    public Text TextFrame_Z;
+    
     #region
 
     public float x_;
@@ -77,8 +76,9 @@ public class player : MonoBehaviourPunCallbacks
     private CameraWork cameraWork;
     void Start()
     {
+       
 
-  
+
         this.tag = "pl";
         /////////////
         //targetRenderer = GetComponent<Renderer>();
@@ -137,12 +137,13 @@ public class player : MonoBehaviourPunCallbacks
             Rotetion(); 　　　　　　　　　　　　 //
             Bullet_();
             StartCoroutine(Cameramove());
+           
             //===============================//
         }
-        float X = transform.position.x;
-        TextFrame_X.text = X.ToString("f0");
-    }
 
+        
+    }
+   
 
     private void OnTriggerEnter(Collider other)
     {

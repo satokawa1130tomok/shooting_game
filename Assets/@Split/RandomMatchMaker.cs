@@ -5,14 +5,14 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+
 //using 
 
 [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
 public class RandomMatchMaker : MonoBehaviourPunCallbacks
 {
 
-
+    public static bool aaa;
     public float random_X;
     public float random_y;
     public float random_Z;
@@ -113,10 +113,11 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
     public void Onclick()
     {
 
-
+       // aaa = true;
         Debug.Log("ルーム" + Button_color.Spawn_number);
         Debug.Log("start");
         SceneManager.LoadScene("PlayScene");
+
 
         IEnumerator Timer()
         {
