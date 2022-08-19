@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6143273488722010536}
   - component: {fileID: 7070723392767678608}
   - component: {fileID: -3736005675054902437}
-  - component: {fileID: -6469189899444979467}
   - component: {fileID: 2393550655998901031}
   - component: {fileID: 7430134516817128450}
   - component: {fileID: 8757652785031910724}
@@ -115,7 +114,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2765394506560239780}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.026556205, y: 0.03969273, z: 0.057856835}
@@ -139,19 +138,6 @@ MonoBehaviour:
   EnemyHP: 0
   bulletSeed: 5000
   distance: 0
---- !u!65 &-6469189899444979467
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2765394506560239780}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.029394247, z: 0.057856835}
-  m_Center: {x: 0.00004662387, y: 0.0060293465, z: 0.014787797}
 --- !u!114 &2393550655998901031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +194,9 @@ MonoBehaviour:
   speed: 10
   move_position_: {x: 0, y: 0, z: 0}
   rd: {fileID: 0}
-  target: {fileID: 0}
+  target:
+  - {fileID: 0}
+  distance: 0
 --- !u!114 &5651639874617225699
 MonoBehaviour:
   m_ObjectHideFlags: 0

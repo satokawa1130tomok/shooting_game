@@ -10,7 +10,7 @@ public class game_generator : MonoBehaviour
     void Start()
 
     {
-        ClearText.GetComponent<Text>().enabled = false;
+        //ClearText.GetComponent<Text>().enabled = false;
         enemycount = 0;
     }
     void Update()

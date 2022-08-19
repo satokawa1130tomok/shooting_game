@@ -41,7 +41,7 @@ public class player : MonoBehaviourPunCallbacks
     private Vector3 force;//弾を飛ばす力
     private float Y;
 
-    public static int bulletcount;
+    public static int bulletcount = 10000;
     public GameObject ammo_box2;
     public GameObject potion;
     public Vector3 position;
@@ -66,6 +66,7 @@ public class player : MonoBehaviourPunCallbacks
     public Vector3 move_position_;
 
     public Vector3 zyx;
+   
 
     //Renderer targetRenderer;
 

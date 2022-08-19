@@ -15,8 +15,8 @@ public class Enemy_Tracking : MonoBehaviourPunCallbacks
     PhotonView myPhtonView;
     public float distance;
     private GameObject confirm_target;
-
-
+    private bool HP = false;
+    //private GameObject Bullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +28,11 @@ public class Enemy_Tracking : MonoBehaviourPunCallbacks
 
     void Update()
     {
-
+        if(HP == true)
+        {
+            Destroy(this.gameObject);
+            Debug.Log("/" + HP);
+        }
         target = GameObject.FindGameObjectsWithTag("pl");
         confirm_target = target[0];
 
@@ -86,6 +90,17 @@ public class Enemy_Tracking : MonoBehaviourPunCallbacks
 
         //Œü‚«
 
+
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("aaaa/" + HP);
+        if (collision.gameObject.tag == "Bullet")
+        {
+            HP = true;
+            Debug.Log("aaa" + HP);
+        }
+    }
+
 
 }

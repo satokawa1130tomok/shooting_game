@@ -52,24 +52,24 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Bullet")
-        {
-            EnemyHP--;
-            //Debug.Log("hit");
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Bullet")
+    //    {
+    //        EnemyHP--;
+    //        //Debug.Log("hit");
 
-        }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
-        {
-            EnemyHP--;
-            //Debug.Log("hit");
+    //    }
+    //}
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Bullet")
+    //    {
+    //        EnemyHP--;
+    //        //Debug.Log("hit");
 
-        }
-    }
+    //    }
+   // }
     void EnemyAttack()
     {
         
