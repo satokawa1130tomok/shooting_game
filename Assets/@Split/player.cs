@@ -1,4 +1,5 @@
-﻿using Photon.Pun;
+﻿#region
+using Photon.Pun;
 using UnityEngine;
 using Photon.Realtime;
 using System.Collections;
@@ -55,7 +56,7 @@ public class player : MonoBehaviourPunCallbacks
     public Rigidbody rd;
 
 
-    public float speed = 15.0f;
+    public float speed = 50.0f;
 
 
     public float rotationSpeed = 10.0f;
@@ -271,3 +272,4 @@ public class player : MonoBehaviourPunCallbacks
 
     }
 }
+#endregion
