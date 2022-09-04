@@ -33,14 +33,15 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
- 
-      
-        if (EnemyHP == 0)
-        {
-            gg.enemycount++;
-            Destroy(this.gameObject);
-        }
-        if (distance < 120)
+
+
+        if (EnemyHP == 0) { 
+    //{
+    //    player.Destroy_count++;
+    //    gg.enemycount++;
+    //    Destroy(this.gameObject);
+}
+if (distance < 120)
         {
            // agent.enabled = true;
             

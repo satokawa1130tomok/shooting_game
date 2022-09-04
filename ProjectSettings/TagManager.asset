@@ -20,6 +20,7 @@ TagManager:
   - bulletcount
   - pl2
   - Text_X
+  - object
   layers:
   - Default
   - TransparentFX

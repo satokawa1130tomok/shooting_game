@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/@clone/Resources/@Animator/@Scenes/Start screen.unity
+    path: Assets/Start screen.unity
     guid: c7ac90a8f10f54dbe9c481c9c87acaa9
   - enabled: 1
-    path: Assets/@clone/Resources/@Animator/@Scenes/PlayScene.unity
+    path: Assets/PlayScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Gameover.unity
+    guid: aa98dc484e34b4f408340d8444ee67fe
   m_configObjects: {}

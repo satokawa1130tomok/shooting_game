@@ -192,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivityX: 15
   sensitivityY: 15
+  hp: 0
   sensitivitymax: 200
   sensitivitynow: 0
   minimumX: 300
@@ -216,6 +217,8 @@ MonoBehaviour:
   ad: 0
   move_position_: {x: 0, y: 0, z: 0}
   zyx: {x: 0, y: 0, z: 0}
+  v3: {x: 0, y: 0, z: 0}
+  enemybullet: 0
 --- !u!114 &3968890177241062634
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class player : MonoBehaviourPunCallbacks
 
 
     private float JumpPower = 8;//ジャンプ力
-
+    public int hp = 0;
 
     public float sensitivitymax = 200F;//マウスのXの動き
     public float sensitivitynow;//マウスのYの動き
@@ -67,7 +67,9 @@ public class player : MonoBehaviourPunCallbacks
     public Vector3 move_position_;
 
     public Vector3 zyx;
-   
+    public Vector3 v3;
+    public int enemybullet;
+    public static int Destroy_count = 0;
 
     //Renderer targetRenderer;
 
@@ -136,17 +138,25 @@ public class player : MonoBehaviourPunCallbacks
 
             Playermove();                    //
             //Jump();                        //
+
             Rotetion(); 　　　　　　　　　　　　 //
             Bullet_();
             StartCoroutine(Cameramove());
-           
+            GameClear_();
             //===============================//
         }
 
         
     }
-   
-
+    private void GameClear_()
+    {
+        if(Destroy_count >= 3)
+        {
+            Debug.Log("clear");
+            SceneManager.LoadScene("GameClear");
+        }
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "ammo_box2")
@@ -271,5 +281,44 @@ public class player : MonoBehaviourPunCallbacks
         }
 
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        
+        if (collision.gameObject.tag == "EnemyBullet")
+        { 
+            Debug.Log("Hit");
+             enemybullet = 10;
+             v3 = this.transform.position;
+            Destroy(collision.gameObject);
+
+            hp++;
+            Debug.Log(hp);
+            if (hp == 10)
+            {
+            //Destroy(this.gameObject);
+            Debug.Log(hp + "a0");
+            SceneManager.LoadScene("Gameover");
+            }
+
+            Invoke(nameof(enemybullet_), 0.5f);
+           
+            
+
+        }
+    }
+    void enemybullet_()
+    {
+        this.transform.position = v3;
+       
+        enemybullet--;
+        if(enemybullet!= 0)
+        {
+            v3 = this.transform.position;
+            Invoke(nameof(enemybullet_), 0.01f);
+        }
+    }
+
+ 
 }
 #endregion

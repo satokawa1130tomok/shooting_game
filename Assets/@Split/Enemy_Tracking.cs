@@ -30,6 +30,7 @@ public class Enemy_Tracking : MonoBehaviourPunCallbacks
     {
         if(HP == true)
         {
+            player.Destroy_count++;
             Destroy(this.gameObject);
             Debug.Log("/" + HP);
         }
@@ -43,7 +44,7 @@ public class Enemy_Tracking : MonoBehaviourPunCallbacks
             Vector3 posB = this.transform.position;
             distance = Vector3.Distance(posA, posB);
 
-            if (Vector3.Distance(confirm_target.transform.position,this.transform.position) < distance)
+            if (Vector3.Distance(confirm_target.transform.position,this.transform.position) > distance)
             {
                 confirm_target = target[i];
             }
