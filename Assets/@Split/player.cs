@@ -122,10 +122,13 @@ public class player : MonoBehaviourPunCallbacks
         //}
 
 
-
+        Invoke("Scenecontrol_", 0.1f);
     }
 
-
+    public void Scenecontrol_()
+    {
+        Scene_control.Scenecontrol = true;
+    }
 
     void Update()
     {
@@ -289,19 +292,19 @@ public class player : MonoBehaviourPunCallbacks
         { 
             Debug.Log("Hit");
              enemybullet = 10;
-             v3 = this.transform.position;
+           //  v3 = this.transform.position;
             Destroy(collision.gameObject);
 
             hp++;
             Debug.Log(hp);
-            if (hp == 10)
+            if (hp == 30)
             {
             //Destroy(this.gameObject);
             Debug.Log(hp + "a0");
             SceneManager.LoadScene("Gameover");
             }
 
-            Invoke(nameof(enemybullet_), 0.5f);
+            //Invoke(nameof(enemybullet_), 0.5f);
            
             
 
